@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e78f16bf-2c31-4c15-b4a7-5c662334a6ca/deploy-status)](https://app.netlify.com/sites/jovial-allen-0f22e2/deploys)
+
 # 👋
 Vivian's Portfolio!
 
