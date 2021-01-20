@@ -1,0 +1,24 @@
+/*! purgecss start ignore */
+@tailwind base;
+@tailwind components;
+/*! purgecss end ignore */
+@tailwind utilities;
+
+
+@font-face {
+    font-family: 'Regular';
+    src: url('./HKGrotesk-Regular.ttf') format('opentype');
+}
+@font-face {
+    font-family: 'Light';
+    src: url('./HKGrotesk-Light.ttf') format('opentype');
+}
+@font-face {
+    font-family: 'Bold';
+    src: url('./HKGrotesk-Bold.ttf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Legacy';
+    src: url('./HKGrotesk-BoldLegacy.ttf') format('opentype');
+}
