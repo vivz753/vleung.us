@@ -57,7 +57,7 @@ function CV () {
 					<Container>
 						<CenterDiv>
 							<Text style={Title} text="Vivian Leung" />
-							<Text style={H1} text="vivz753@gmail.com" />
+							<Text style={H1} text="vivz753@gmail.com   |   (916) 833-8138" />
 						</CenterDiv>
 						<LeftDiv>
 

@@ -64,11 +64,11 @@ export const Stats = () => {
 					<Border top />
 				</div>
 			</div>
-			<div className="text-left w-full xl:w-3/4 px-5 md:px-0 my-10 lg:my-4">
+			<div className="text-left mx-auto w-full xl:w-3/4 px-5 md:px-0 my-10 lg:my-4">
 				<ListItem leftText="Weapon:" rightText="MacBook Pro 2016" />
 				<ListItem leftText="Class:" rightText="Web Developer" />
 				<ListItem leftText="Languages:" rightText="JS, C++, Python" />
-				<ListItem leftText="Abilities:" rightText="Git, React, Vim, VSCode" />
+				<ListItem leftText="Skills:" rightText="Git, React, Vim, VSCode" />
 			</div>
 		</div>
 )
