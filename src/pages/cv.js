@@ -60,27 +60,30 @@ function CV () {
 							<Text style={H1} text="vivz753@gmail.com   |   (916) 833-8138" />
 						</CenterDiv>
 						<LeftDiv>
+								
+							{/* Employment */}
+							<Text style={Title} text="Employment" />
+							<LeftDivA>
+								<Job title="Front-End Software Engineer" date="Mar 2020 - current" location="The Power of Music LTD, London England UK" />
+								<Job title="Full Stack Software Engineer" date="Dec 2019 - Feb 2020" location="AutoviseAI LLC, Gujarat India" />
+								<Job title="C++ Software Engineer" date="Nov 2019 - Sep 2020" location="Auris Health, Redwood City CA USA" />
+								<Job title="Machine Learning Intern" date="Jun 2019 - Sep 2019" location="Clover Network, Sunnyvale CA USA" />
+								<Job title="Front-End Software Intern" date="Oct 2018 - Mar 2019" location="IBM Silicon Valley Labs, San Jose CA USA" />
+								<Job title="Instructional Student Assistant" date="Nov 2017 - May 2018" location="San Jose State University, San Jose CA USA" />
+								<Job title="Lab Technician" date="Aug 2017 - Sep 2017" location="Spectra7 Microsystems, San Jose CA USA" />
+								<Job title="Sales Associate" date="Dec 2016 - Feb 2017" location="Barnes & Nobles, Inc., San Jose CA USA" />
+								<Job title="Lifeguard, Swim Instructor" date="May 2014 - Aug 2015" location="Cosumnes CSD, Elk Grove CA USA" />
+								<Job title="Tutor, Babysitter" date="Sep 2014 - Jul 2015" location="Self-employed, Elk Grove, CA USA" />
+							</LeftDivA>
 
 							{/* Education */}
 							<Text style={Title} text="Education" />
 							<LeftDivA>
 								<Job title="BS Software Engineering, 3.72 GPA" date="Aug 2015 - May 2019" location="San Jose State University, San Jose CA" />
 							</LeftDivA>
-								
-							{/* Employment */}
-							<Text style={Title} text="Employment" />
-							<LeftDivA>
-								<Job title="C++ Software Engineer" date="Nov 2019 - Sep 2020" location="Auris Health, Redwood City CA" />
-								<Job title="Machine Learning Intern" date="Jun 2019 - Sep 2019" location="Clover Network, Sunnyvale CA" />
-								<Job title="Front-End Software Intern" date="Oct 2018 - Mar 2019" location="IBM Silicon Valley Labs, San Jose CA" />
-								<Job title="Instructional Student Assistant" date="Nov 2017 - May 2018" location="San Jose State University, San Jose CA" />
-								<Job title="Lab Technician" date="Aug 2017 - Sep 2017" location="Spectra7 Microsystems, San Jose CA" />
-								<Job title="Sales Associate" date="Dec 2016 - Feb 2017" location="Barnes & Nobles, Inc., San Jose CA" />
-								<Job title="Lifeguard, Swim Instructor" date="May 2014 - Aug 2015" location="Cosumnes CSD, Elk Grove CA" />
-								<Job title="Tutor, Babysitter" date="Sep 2014 - Jul 2015" location="Self-employed, Elk Grove, CA" />
-							</LeftDivA>
 
-							<Text style={Title} text="Leadership & Community Service" />
+              {/* Leadership */}
+							<Text style={Title} text="Leadership" />
 							<LeftDivA>
 								<Job title="Treasurer" date="May 2018 - May 2019" location="Society of Women Engineers, San Jose State University"/>
 								<Job title="Clubroom Manager" date="Nov 2017 - May 2018" location="Society of Women Engineers, San Jose State University" />
@@ -92,7 +95,7 @@ function CV () {
 							<Text style={Title} text="Awards/Certifications" />
 
 							<LeftDivA>
-	    							<Job title="edX Verified Certificate for Computer Graphics" link="https://courses.edx.org/certificates/482ed4cfd2b0444d846da2e1975dacdc" date="Issued Oct 2020" location="University of San Diego, San Diego CA" />
+	    							<Job title="edX Verified Certificate for Computer Graphics" link="https://courses.edx.org/certificates/482ed4cfd2b0444d846da2e1975dacdc" date="Oct 2020" location="University of San Diego, San Diego CA" />
 								<Job title="Dean's Scholar" date="Aug 2015 - May 2019" location="San Jose State University, San Jose CA" />
 								<Job title="Silicon Valley Engineering Scholarship" date="Aug 2015 - May 2019" location="San Jose State University, San Jose CA" />
 								<Job title="American Red Cross Lifeguarding/First Aid/Administering Emergency Oxygen/CPR/AED" date="Apr 2014" location="Cosumnes CSD, Elk Grove" />

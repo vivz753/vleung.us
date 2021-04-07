@@ -18,9 +18,6 @@ const MyFooter = (props) => {
 					</p>
 				</div>
 				
-        <p className="text-md text-gray-700 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4 font-regular">© 2020 Vivian Leung
-        </p>
-
 				<div className="md:ml-2">
 					<Link to="/hidden">
 						<GiFlowerPot css={[tw`hover:text-pink-500`]}/>
