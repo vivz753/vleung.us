@@ -3,10 +3,9 @@ import { Link } from "gatsby";
 import tw, { styled, css } from "twin.macro"
 import Clock from "react-live-clock"
 
-function MyHeader() {
+const MyHeader = (props) => {
 
 // Containers
-const Header = tw.header``
 const Container = tw.div`container mx-auto flex flex-wrap px-5 py-8 flex-col md:flex-row items-center`
 const NavBar = tw.nav`flex flex-wrap md:flex-row flex-col items-center md:items-start`
 
@@ -43,9 +42,8 @@ const HoverColor = styled.p`
 `
 
   return (
-		<Header>
+		<div className={`${props.className}`}>
 			<Container>
-
 				{/* Title */}
 				<ColorLink style={titleText} path="/" text="vleung" color="purple"/>
 				
@@ -63,7 +61,7 @@ const HoverColor = styled.p`
 				</p>
 
 		</Container>
-	</Header>
+	</div>
   );
 }
 
