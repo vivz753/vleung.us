@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import ConfettiParty from "./Confetti";
 import Player from "./Player";
 import { FaBirthdayCake } from "react-icons/fa"
+import ProfilePic from '../../images/vivian.jpg'
+import { GiBroadsword, GiOrbWand, GiAngelWings, GiBlackBook, GiShield } from "react-icons/gi"
 
 const Splash2 = () => {
 
@@ -13,17 +15,31 @@ const Splash2 = () => {
     console.log(dropped)
   }
 
+  
 
   return (
     <div className="relative overflow-hidden z-20 bg-yellow-100 w-full mx-auto items-center justify-center my-auto flex flex-col">
       <div className="w-full -mt-2">
         <ConfettiParty counter={dropped} /> 
       </div>
-      <div className="w-1/2 h-full text-center py-64">
-        <p className="text-2xl py-12">
-          hey i'm vivian
-        </p>
-        <div className="flex flex-row justify-evenly w-full py-12">
+      <div className="w-1/2 h-full text-center py-20">
+        <div className="jusitfy-center mx-auto flex flex-row w-full h-full">
+          <div className="w-1/3 m-8 flex items-center justify-center">
+            <img className="rounded-lg" src={ProfilePic} alt="me" />
+          </div>
+          <div className="w-2/3 text-left items-center justify-center flex flex-col">
+            <ul>
+              <li className="text-3xl py-2">Level 24</li>
+              <li className="text-2xl pb-4 flex flex-row items-center">Web Developer<GiAngelWings className="mx-2" /></li>
+              <li className="text-xl pb-2 flex flex-row items-center"><GiBroadsword className="mx-2" />MacBook Pro 2016</li>
+              <li className="text-xl pb-2 flex flex-row items-center"><GiShield className="mx-2" />Vim, VSCode</li>
+              <li className="text-xl pb-2 flex flex-row items-center"><GiOrbWand className="mx-2" />React, Tailwind CSS, Emotion, Styled Components</li>
+              <li className="text-xl pb-2 flex flex-row items-center"><GiBlackBook className="mx-2" />Javascript, C++, Python</li>
+            </ul>
+
+          </div>
+        </div>
+        <div className="flex flex-row justify-evenly w-full py-16">
           <button onClick={dropConfetti} className="text-center text-red-700 justify-center flex items-center bg-red-500 rounded-full w-32 h-32 border-red-700 border-b-8 hover:bg-red-600 focus:text-red-800">
             <FaBirthdayCake className="w-8 h-8" />
           </button>
