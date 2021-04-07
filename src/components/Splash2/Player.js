@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaPlay, FaPause } from "react-icons/fa"
 
 const useAudio = url => {
-  const [audio] = useState(new Audio(url));
+  const [audio] = useState(typeof Audio !== "undefined" && new Audio(url));
   const [playing, setPlaying] = useState(false);
 
   const toggle = () => setPlaying(!playing);
