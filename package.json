@@ -4,6 +4,7 @@
   "version": "4.0.0",
   "author": "vivz753",
   "dependencies": {
+    "@emotion/react": "^11.1.5",
     "gatsby": "2.24.11",
     "gatsby-plugin-jss": "^2.3.10",
     "gatsby-plugin-manifest": "2.4.21",
@@ -20,8 +21,7 @@
     "react-icons": "^3.11.0",
     "react-jss": "^10.4.0",
     "react-live-clock": "^4.0.5",
-    "react-paypal-button-v2": "^2.6.2",
-    "react-paypal-express-checkout": "^1.0.5"
+    "seedrandom": "^3.0.5"
   },
   "keywords": [
     "gatsby",

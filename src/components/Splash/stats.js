@@ -68,7 +68,7 @@ export const Stats = () => {
 				<ListItem leftText="Weapon:" rightText="MacBook Pro 2016" />
 				<ListItem leftText="Class:" rightText="Web Developer" />
 				<ListItem leftText="Languages:" rightText="JS, C++, Python" />
-				<ListItem leftText="Skills:" rightText="Git, React, Vim, VSCode" />
+				<ListItem leftText="Spells:" rightText="React, Tailwind CSS, Emotion" />
 			</div>
 		</div>
 )

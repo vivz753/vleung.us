@@ -2,15 +2,16 @@ import React from "react";
 import MyLayout from "../layout/MyLayout";
 import SEO from "../layout/seo";
 import { Splash } from "../components/Splash/splash";
+import Splash2 from "../components/Splash2";
 
 function IndexPage() {
   return (
     <MyLayout>
       <SEO
-        keywords={[`vivian leung`, `vivian`]}
-        title="Home"
+        keywords={[`vleung.us`, `vivian leung`, `vivian`]}
+        title="vleung.us"
       />
-      <Splash />
+      <Splash2 />
     </MyLayout>
   );
 }

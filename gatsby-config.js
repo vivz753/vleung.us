@@ -5,7 +5,7 @@ const fullConfig = resolveConfig(tailwindConfig);
 module.exports = {
   siteMetadata: {
     title: `Vivian Leung`,
-    description: `B.S. Software Engineering, SJSU`,
+    description: `Millennial Web Developer, Gamer, and Artist, she/her`,
     author: `@vivz753`,
   },
   plugins: [
