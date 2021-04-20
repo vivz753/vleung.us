@@ -19,6 +19,12 @@ const [state, dispatch] = useReducer((state, action) => {
         audioPlaying: action.data,
       };
 
+    case "theme":
+      return {
+        ...state,
+        theme: action.data,
+      };
+
     case "clear":
       return {
       };

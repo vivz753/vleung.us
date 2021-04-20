@@ -6,7 +6,7 @@ import { GlobalState } from "../hooks/useGlobalState"
 import Splash2 from "../components/organisms/Splash2";
 import CV from "../components/organisms/CV"
 import Portfolio from "../components/organisms/Portfolio"
-import Hidden from "./hidden"
+import Hidden from "../components/organisms/Hidden"
 
 function App() {
 

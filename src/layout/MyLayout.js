@@ -13,7 +13,7 @@ const MyLayout = ({ children }) => {
   }
   const [ playing, setPlaying] = useAudio(url);
 
-  const { audioPlaying, dispatch } = useGlobalState();
+  const { audioPlaying, dispatch, theme } = useGlobalState();
 
   useEffect(() => {
     // update global when the song ends
@@ -27,11 +27,11 @@ const MyLayout = ({ children }) => {
 
   return (
     <div className="flex flex-col h-full min-h-screen">
-      <Header className="z-30"/>
+      <Header dark={theme} className="z-30"/>
       <main>
         {children}
       </main>
-      <Footer song={audioPlaying && songs[url]} className="z-30"/>
+      <Footer dark={theme} song={audioPlaying && songs[url]} className="z-30"/>
     </div>
   );
 

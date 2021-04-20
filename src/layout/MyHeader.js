@@ -10,8 +10,8 @@ const Container = tw.div`container mx-auto flex flex-wrap px-5 py-8 flex-col md:
 const NavBar = tw.nav`flex flex-wrap md:flex-row flex-col items-center md:items-start`
 
 // Fonts
-const titleText = css`${tw`md:mx-4 flex text-2xl items-center text-black font-legacy md:mb-0`}`
-const normalText = css`${tw`md:mx-4 md:my-0 my-1 font-legacy text-black text-lg font-regular`}`
+const titleText = css`${tw`md:mx-4 flex text-2xl items-center font-legacy md:mb-0`}`
+const normalText = css`${tw`md:mx-4 md:my-0 my-1 font-legacy text-lg font-regular`}`
 
 // Components
 const ColorLink = props => (
@@ -42,7 +42,7 @@ const HoverColor = styled.p`
 `
 
   return (
-		<div className={`${props.className}`}>
+		<div className={`${props.className} ${props.dark && `bg-gray-800 text-white`}`}>
 			<Container>
 				{/* Title */}
 				<ColorLink style={titleText} path="/app" text="vleung" color="purple"/>

@@ -4,7 +4,7 @@ import tw, { styled, css } from 'twin.macro'
 
 
 // Containers
-const Container = tw.div`container mx-auto flex px-6 sm:px-24 md:p-0 pt-0 flex-col items-center`
+const Container = tw.div`bg-white container mx-auto flex px-6 sm:px-24 md:p-0 pt-0 flex-col items-center`
 const CenterDiv = tw.div`text-center justify-center lg:m-6 mx-4 mt-0 mb-8`
 const LeftDiv = tw.div`lg:w-8/12 md:w-11/12 justify-center`
 const LeftDivA = tw.div`lg:pl-12 md:pl-8 pt-4 pb-4`

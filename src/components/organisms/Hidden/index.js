@@ -1,8 +1,7 @@
 import React from 'react'
-import MyLayout from '../layout/MyLayout'
 import tw from 'twin.macro'
 
-import { H1, Quote, RegularText, RegularParagraph, Text } from '../atoms/Text'
+import { H1, Quote, RegularText, RegularParagraph, Text } from '../../atoms/Text'
 
 const Section = tw.section`bg-yellow-100`
 const Container=tw.div`container mx-auto flex px-5 pb-12 flex-col items-center`
@@ -14,7 +13,6 @@ const Card=tw.div`lg:flex-grow md:w-full md:px-5 px-1 py-10 flex flex-col items-
 
 function Hidden () {
 return (
-	<MyLayout>
 		<Section>
 			<Container>
 				<Content>
@@ -87,7 +85,6 @@ return (
 				</Card>
 			</Container>
 		</Section>
-	</MyLayout>
 );
 }
 

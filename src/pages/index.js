@@ -1,27 +1,18 @@
 import React, { useEffect } from "react";
-import MyLayout from "../layout/MyLayout";
-import SEO from "../layout/seo";
-import { Splash } from "../components/organisms/Splash/splash";
-import Splash2 from "../components/organisms/Splash2";
-import { GlobalState } from "../hooks/useGlobalState"
 import { navigate } from "gatsby-link";
-
+import { FaCompactDisc } from "react-icons/fa"
 
 function IndexPage() {
   useEffect(() => {
     navigate("/app")
   })
-  
+
   return (
-    <GlobalState>
-      <MyLayout>
-        <SEO
-          keywords={[`vleung.us`, `vivian leung`, `vivian`]}
-          title="vleung.us"
-          />
-        <Splash2 />
-      </MyLayout>
-    </GlobalState>
+    <div className="flex justify-center items-center h-screen">
+      <div className="animate-spin">
+        <FaCompactDisc className="animate-spin w-16 h-16 text-blue-500"/>
+      </div>
+    </div>
   );
 }
 
