@@ -6,6 +6,7 @@
   "dependencies": {
     "@emotion/react": "^11.1.5",
     "gatsby": "2.24.11",
+    "gatsby-plugin-create-client-paths": "^3.3.0",
     "gatsby-plugin-jss": "^2.3.10",
     "gatsby-plugin-manifest": "2.4.21",
     "gatsby-plugin-offline": "3.2.20",
