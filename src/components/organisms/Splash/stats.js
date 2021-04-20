@@ -1,7 +1,7 @@
 import React from 'react';
 import tw, { css } from 'twin.macro'
 
-import { Text, RegularText, Quote } from '../Common/Text'
+import { Text, RegularText, Quote } from '../../atoms/Text'
 
 const BlackB= css`${tw`border-black`}`
 const STR= css`${tw`border-red-500 w-1/2`}`

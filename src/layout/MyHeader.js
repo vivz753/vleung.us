@@ -45,13 +45,13 @@ const HoverColor = styled.p`
 		<div className={`${props.className}`}>
 			<Container>
 				{/* Title */}
-				<ColorLink style={titleText} path="/" text="vleung" color="purple"/>
+				<ColorLink style={titleText} path="/app" text="vleung" color="purple"/>
 				
 				{/* Menu */}
 				<NavBar>
 
-					<ColorLink style={normalText} color="blue" path="/cv/" text="CV"/>
-					<ColorLink style={normalText} color="red"  path="/portfolio/" text="Portfolio"/>
+					<ColorLink style={normalText} color="blue" path="/app/cv/" text="CV"/>
+					<ColorLink style={normalText} color="red"  path="/app/portfolio/" text="Portfolio"/>
 
 				</NavBar>
 

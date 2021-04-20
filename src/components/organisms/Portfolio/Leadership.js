@@ -2,16 +2,16 @@ import React from "react";
 import Carousel from 'nuka-carousel';
 import { Section, Container, Col, CenterDiv, Title, Bar, Content, H1, P } from './Format';
 
-import One from '../../images/swe/swe_table.jpeg';
-import Two from "../../images/swe/vivian-award.jpg"
-import Wie2 from '../../images/swe/wie-2.jpg'
-import Seven from '../../images/swe/succulent-shop-2.jpg'
-import Nine from '../../images/swe/succulent-shop-mario.jpg'
-import Ten from '../../images/swe/succulent-shop-mario-2.jpg'
-import Eleven from '../../images/swe/succulents-display.jpg'
-import Twelve from '../../images/swe/succulents.jpg'
-import Fourteen from '../../images/swe/swe-board.jpg'
-import Fifteen from '../../images/swe/swe-julie.jpeg'
+import One from '../../../images/swe/swe_table.jpeg';
+import Two from "../../../images/swe/vivian-award.jpg"
+import Wie2 from '../../../images/swe/wie-2.jpg'
+import Seven from '../../../images/swe/succulent-shop-2.jpg'
+import Nine from '../../../images/swe/succulent-shop-mario.jpg'
+import Ten from '../../../images/swe/succulent-shop-mario-2.jpg'
+import Eleven from '../../../images/swe/succulents-display.jpg'
+import Twelve from '../../../images/swe/succulents.jpg'
+import Fourteen from '../../../images/swe/swe-board.jpg'
+import Fifteen from '../../../images/swe/swe-julie.jpeg'
 
 function Leadership() {
 

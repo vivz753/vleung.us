@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import tw, { css } from 'twin.macro'
 import { FaCaretUp, FaCaretDown } from 'react-icons/fa';
-import ProfilePic from '../../images/profile.jpg'
-import { H1 } from '../Common/Text'
+import ProfilePic from '../../../images/profile.jpg'
 import { ViewMyWork }  from './viewmywork'
 import { Stats } from './stats'
 
@@ -18,7 +17,7 @@ const Content = tw.div`lg:flex-grow w-full px-2 lg:w-1/2 lg:pl-24 flex flex-col 
 const Bio = () =>
 (
 	<div className="mt-8 m-auto">
-		<H1>hi, i'm vivian</H1>
+		<h1>hi, i'm vivian</h1>
 	</div>
 )
 

@@ -5,12 +5,10 @@ import tw, { css } from 'twin.macro'
 import { BiPalette } from 'react-icons/bi'
 import { FaLaptopCode } from 'react-icons/fa'
 import { GiBarracksTent } from 'react-icons/gi'
-import MyLayout from '../layout/MyLayout';
-import SEO from '../layout/seo';
 
-import Art from '../components/Portfolio/Art'
-import ComputerGraphics from '../components/Portfolio/ComputerGraphics'
-import Leadership from '../components/Portfolio/Leadership'
+import Art from './Art'
+import ComputerGraphics from './ComputerGraphics'
+import Leadership from './Leadership'
 
 const ColorLink = props => (
 	<Link to={props.path}>
@@ -35,20 +33,16 @@ function Portfolio () {
 
 
 	return (
-		<MyLayout>
-			<SEO
-					keywords={[`work`, `projects`, `design`, `vivian work`]}
-					title="Work"
-			/>
+    <>
 			<div className="fixed sticky pb-8 md:-mt-16 sm:w-1/4 items-center justify-center mx-auto text-center flex flex-row">
-				<ColorLink path="/portfolio#artist" icon="palette" color="red"/> 
-				<ColorLink path="/portfolio#engineer" icon="laptop" color="green"/> 
-				<ColorLink path="/portfolio#activist" icon="tent" color="purple"/>
+				<ColorLink path="/app/portfolio#artist" icon="palette" color="red"/> 
+				<ColorLink path="/app/portfolio#engineer" icon="laptop" color="green"/> 
+				<ColorLink path="/app/portfolio#activist" icon="tent" color="purple"/>
 			</div>
 			<Art />
 			<ComputerGraphics />
 			<Leadership />
-		</MyLayout>
+		</>
 	);
 }
 

@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import ConfettiParty from "./Confetti";
 import Player from "./Player";
 import { FaBirthdayCake } from "react-icons/fa"
-import ProfilePic from '../../images/vivian.jpg'
+import ProfilePic from '../../../images/vivian.jpg'
 import { GiBroadsword, GiOrbWand, GiAngelWings, GiBlackBook, GiShield } from "react-icons/gi"
 
 const Splash2 = () => {
+
 
   const [dropped, setDropped] = useState(-1);
 
@@ -43,7 +44,8 @@ const Splash2 = () => {
           <button onClick={dropConfetti} className="text-center text-red-700 justify-center flex items-center bg-red-500 rounded-full w-32 h-32 border-red-700 border-b-8 hover:bg-red-600 focus:text-red-800">
             <FaBirthdayCake className="w-8 h-8" />
           </button>
-          <Player url="https://orangefreesounds.com/wp-content/uploads/2016/02/Debussy-arabesque-no-1.mp3?_=1">
+          <Player 
+            url="">
             <button className="bg-yellow-500 rounded-full w-32 h-32 border-yellow-600 border-b-8 hover:bg-yellow-600 focus:bg-yellow-700 focus:border-yellow-200">
             </button>
           </Player>

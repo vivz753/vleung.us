@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import tw from 'twin.macro'
 
-import { SocialMediaButtons } from '../components/SocialMediaButtons'
+import { SocialMediaButtons } from '../components/atoms/SocialMediaButtons'
 import { GiFlowerPot } from 'react-icons/gi'
 
 const MyFooter = (props) => {
@@ -12,17 +12,21 @@ const MyFooter = (props) => {
 					
 				<div className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
 					<p className="ml-3 text-2xl font-regular">
-						<Link to="/">
+						<Link to="/app">
 							vleung
 						</Link>
 					</p>
 				</div>
 				
 				<div className="md:ml-2">
-					<Link to="/hidden">
+					<Link to="/app/hidden">
 						<GiFlowerPot css={[tw`hover:text-pink-500`]}/>
 					</Link>
 				</div>
+
+				<div className="md:ml-2">
+          {props.song}
+        </div>
 
 				<div className="md:ml-auto">
 					<SocialMediaButtons />

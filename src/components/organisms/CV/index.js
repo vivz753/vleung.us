@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from "gatsby"
 import tw, { styled, css } from 'twin.macro'
 
-import SEO from '../layout/seo';
-import MyLayout from '../layout/MyLayout';
 
 // Containers
 const Container = tw.div`container mx-auto flex px-6 sm:px-24 md:p-0 pt-0 flex-col items-center`
@@ -49,11 +47,6 @@ const Job = props => (
 function CV () {
 
     return (
-        <MyLayout>
-					<SEO
-						keywords={[`resume`, `vivian`, `vivian leung`, `portfolio`]}
-						title="Resume"
-					/>
 					<Container>
 						<CenterDiv>
 							<Text style={Title} text="Vivian Leung" />
@@ -104,7 +97,6 @@ function CV () {
 							</LeftDivA>
 						</LeftDiv>
 					</Container>
-        </MyLayout>
     );
 }
 

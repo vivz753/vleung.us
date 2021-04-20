@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from 'gatsby';
 import tw, { css } from "twin.macro"
 
-import { RegularText, RegularParagraph, Text } from '../Common/Text'
+import { RegularText, RegularParagraph, Text } from '../../atoms/Text'
 
 const FlexCenter = tw.div`flex justify-center flex-col`
 const Row = tw.span`inline-flex sm:ml-auto sm:mt-0 mt-4 mb-4 justify-center sm:justify-start`
@@ -28,9 +28,9 @@ export const ViewMyWork = () =>
 <FlexCenter>
 	<Row>
 		<div>
-			<Badge path="/portfolio#artist" text="Artist" color="red" />
-			<Badge path="/portfolio#engineer" text="Engineer" color="green" />
-			<Badge path="/portfolio#activist" text="Activist" color="purple" />
+			<Badge path="/app/portfolio#artist" text="Artist" color="red" />
+			<Badge path="/app/portfolio#engineer" text="Engineer" color="green" />
+			<Badge path="/app/portfolio#activist" text="Activist" color="purple" />
 		</div>
 	</Row>
 </FlexCenter>
