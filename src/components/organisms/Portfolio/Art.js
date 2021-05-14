@@ -15,10 +15,10 @@ import FiveThumb from "../../../images/art/5thumb.jpg"
 import Six from "../../../images/art/6.jpg"
 import SixThumb from "../../../images/art/6thumb.jpg"
 import Seven from "../../../images/art/7.jpg"
-import SevenThumb from "../../../images/art/7thumb.jpg"
-import OilOnion from "../../../images/art/OilOnion.jpg"
-import OilAnthonyBourdain from "../../../images/art/OilAnthonyBourdain.jpg"
-import OilLandscape from "../../../images/art/OilLandscape.jpg"
+import SevenThumb from "../../../images/art/7thumbnail.jpg"
+import OilOnions from "../../../images/art/OilOnions.jpg"
+import OilBourdain from "../../../images/art/OilBourdain.jpg"
+import OilMountains from "../../../images/art/OilMountains.jpg"
 import CharcoalButt from "../../../images/art/CharcoalButt.jpg"
 import Asaro from "../../../images/art/Asaro.jpg"
 import Mark from "../../../images/art/Mark.jpg"
@@ -91,22 +91,22 @@ const IMAGES =
 				caption: "Charcoal, 7 hrs - September 2020"
 },
 {
-				src: OilOnion,
-				thumbnail: OilOnion,
+				src: OilOnions,
+				thumbnail: OilOnions,
 				thumbnailWidth: 3363,
 				thumbnailHeight: 2712,
 				caption: "Oil paint, 14 hrs - September 2020"
 },
 {
-				src: OilLandscape,
-				thumbnail: OilLandscape,
+				src: OilMountains,
+				thumbnail: OilMountains,
 				thumbnailWidth: 3024,
 				thumbnailHeight: 4032,
 				caption: 'Oil paint 16"x20", 40 hrs - October 2020'
 },
 {
-				src: OilAnthonyBourdain,
-				thumbnail: OilAnthonyBourdain,
+				src: OilBourdain,
+				thumbnail: OilBourdain,
 				thumbnailWidth: 3024,
 				thumbnailHeight: 4000,
 				caption: 'Oil paint 16"x20", 27 hrs - November 2020'
