@@ -6,7 +6,8 @@ export const Section= (props) =>
 	<section id={props.id} css={[tw`bg-yellow-100`,
 		props.color==="green" && tw`bg-green-100`,
 		props.color==="purple" && tw`bg-purple-100`,
-		props.color==="red" && tw`bg-red-100`]}>
+		props.color==="red" && tw`bg-red-100`,
+    props.color==="black" && tw`bg-club text-white`]}>
 		{props.children}
 	</section>
 )

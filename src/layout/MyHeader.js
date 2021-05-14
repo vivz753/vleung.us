@@ -42,7 +42,7 @@ const HoverColor = styled.p`
 `
 
   return (
-		<div className={`${props.className} ${props.dark && `bg-gray-800 text-white`}`}>
+		<div className={`${props.className} ${props.dark && `bg-club text-white`}`}>
 			<Container>
 				{/* Title */}
 				<ColorLink style={titleText} path="/app" text="vleung" color="purple"/>

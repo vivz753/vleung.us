@@ -9,7 +9,6 @@ module.exports = {
     author: `@vivz753`,
   },
   plugins: [
-    `gatsby-plugin-eslint`,
     `gatsby-plugin-react-helmet`,
 		`gatsby-plugin-emotion`,
     {

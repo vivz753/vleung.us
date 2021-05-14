@@ -23,25 +23,24 @@ const Splash2 = () => {
   }  
 
   return (
-    <div className="relative overflow-hidden z-20 bg-yellow-100 w-full mx-auto items-center justify-center my-auto flex flex-col">
+    <div className={`relative overflow-hidden z-20 ${theme ? `bg-club` : `bg-yellow-100`} w-full mx-auto items-center justify-center my-auto flex flex-col`}>
       <div className="w-full -mt-2">
         <ConfettiParty counter={dropped} /> 
       </div>
       <div className="w-1/2 h-full text-center py-20">
-        <div className="jusitfy-center mx-auto flex flex-row w-full h-full">
-          <div className="w-1/3 m-8 flex items-center justify-center">
+        <div className="jusitfy-end mx-auto flex flex-row w-full h-full">
+          <div className="w-1/3 h-full m-8 flex items-center justify-end">
             <img className="rounded-lg" src={ProfilePic} alt="me" />
           </div>
-          <div className="w-2/3 text-left items-center justify-center flex flex-col text-gray-900">
+          <div className={`w-2/3 font-regular text-left items-center justify-center flex flex-col ${theme ? `text-white` : `text-yellow-900`}`}>
             <ul>
-              <li className="text-3xl py-2">Level 24</li>
+              <li className="text-3xl py-2">Level 25</li>
               <li className="text-2xl pb-4 flex flex-row items-center">Web Developer<GiAngelWings className="mx-2" /></li>
               <li className="text-xl pb-2 flex flex-row items-center"><GiBroadsword className="mx-2" />MacBook Pro 2016</li>
               <li className="text-xl pb-2 flex flex-row items-center"><GiShield className="mx-2" />Vim, VSCode</li>
               <li className="text-xl pb-2 flex flex-row items-center"><GiOrbWand className="mx-2" />React, Tailwind CSS, Emotion, Styled Components</li>
               <li className="text-xl pb-2 flex flex-row items-center"><GiBlackBook className="mx-2" />Javascript, C++, Python</li>
             </ul>
-
           </div>
         </div>
         <div className="flex flex-row justify-evenly w-full py-16">

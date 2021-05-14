@@ -11,7 +11,7 @@ const MyLayout = ({ children }) => {
   const songs = {
     "https://orangefreesounds.com/wp-content/uploads/2016/02/Debussy-arabesque-no-1.mp3?_=1" : "Arabesque No. 1 - Debussy"
   }
-  const [ playing, setPlaying] = useAudio(url);
+  const [playing, setPlaying] = useAudio(url);
 
   const { audioPlaying, dispatch, theme } = useGlobalState();
 

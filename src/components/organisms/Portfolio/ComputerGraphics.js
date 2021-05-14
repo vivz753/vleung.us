@@ -2,7 +2,7 @@ import React from 'react';
 import tw from 'twin.macro'
 import { Section, Container, Col, CenterDiv, Title, Bar, Content, H1, P } from './Format';
 
-function ComputerGraphics() {
+const ComputerGraphics = (props) => {
 
 const VideosContainer=tw.div`flex flex-wrap sm:-m-4 -mx-4`
 const VideoIframe= (props) => (
@@ -20,7 +20,7 @@ const VideoIframe= (props) => (
 const VideoCard= (props) => (
 <div className="p-4 md:w-1/3 pt-8 pb-6 sm:pb-4">
 	<VideoIframe src={props.src} title={props.title} />
-	<h2 className="text-xl font-medium title-font text-black font-legacy mt-5">
+	<h2 className="text-xl font-medium title-font font-legacy mt-5">
 		{props.title}
 	</h2>
 	<p className="text-base leading-relaxed font-regular mt-2">
@@ -31,7 +31,7 @@ const VideoCard= (props) => (
 
 return (
 <div id="engineer">
-	<Section id="engineer" color="green">
+	<Section id="engineer" color={props.dark ? `black` : `green`}>
 		<Container id="engineer">
 			<CenterDiv><Title>Computer Graphics</Title></CenterDiv>
 			<Bar color="green"/>

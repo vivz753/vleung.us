@@ -10,6 +10,8 @@ import Art from './Art'
 import ComputerGraphics from './ComputerGraphics'
 import Leadership from './Leadership'
 
+import { useGlobalState } from "../../../hooks/useGlobalState" 
+
 const ColorLink = props => (
 	<Link to={props.path}>
 		<p className="px-2 text-blue-500"
@@ -28,20 +30,20 @@ const Purple=css`${tw`text-purple-500`}`
 const Red=css`${tw`text-red-500`}`
 
 
-function Portfolio () {
+const Portfolio = () => {
 
-
+  const { theme } = useGlobalState();
 
 	return (
     <>
-			<div className="fixed sticky pb-8 md:-mt-16 sm:w-1/4 items-center justify-center mx-auto text-center flex flex-row">
+			{/* <div className="fixed sticky pb-8 md:-mt-16 sm:w-1/4 items-center justify-center mx-auto text-center flex flex-row">
 				<ColorLink path="/app/portfolio#artist" icon="palette" color="red"/> 
 				<ColorLink path="/app/portfolio#engineer" icon="laptop" color="green"/> 
 				<ColorLink path="/app/portfolio#activist" icon="tent" color="purple"/>
-			</div>
-			<Art />
-			<ComputerGraphics />
-			<Leadership />
+			</div> */}
+			<Art dark={theme} />
+			<ComputerGraphics dark={theme} />
+			<Leadership dark={theme} />
 		</>
 	);
 }

@@ -2,6 +2,7 @@ import React, { createContext, useContext, useReducer } from "react"
 
 const initialState = {
   audioPlaying: false,
+  theme: true,
   dispatch: () => {
     throw new Error("No Context")
   }

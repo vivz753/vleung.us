@@ -13,7 +13,7 @@ import Twelve from '../../../images/swe/succulents.jpg'
 import Fourteen from '../../../images/swe/swe-board.jpg'
 import Fifteen from '../../../images/swe/swe-julie.jpeg'
 
-function Leadership() {
+const Leadership = (props) => {
 
     
 const Img = (props) => (
@@ -44,7 +44,7 @@ const StyledCarousel = (props) => (
 )
 
 return (
-	<Section id="activist" color="purple">
+	<Section id="activist" color={props.dark ? `black` : `purple`}>
 		<Container>
 			<CenterDiv><Title>Community Service</Title></CenterDiv>	
 			<Bar color="purple"/>
