@@ -1,6 +1,6 @@
 import React from "react";
 import Carousel from 'nuka-carousel';
-import { Section, Container, Col, CenterDiv, Title, Bar, Content, H1, P } from './Format';
+import { Container, Col, CenterDiv, Title, Bar, Content, H1, P } from './Format';
 
 import One from '../../../images/swe/swe_table.jpeg';
 import Two from "../../../images/swe/vivian-award.jpg"
@@ -44,10 +44,10 @@ const StyledCarousel = (props) => (
 )
 
 return (
-	<Section id="activist" color={props.dark ? `black` : `purple`}>
+	<section id="activist" className={`${props.dark ? `bg-purple-900 bg-opacity-25 text-purple-200` : `bg-purple-100`}`}>
 		<Container>
 			<CenterDiv><Title>Community Service</Title></CenterDiv>	
-			<Bar color="purple"/>
+			<Bar className="bg-purple-500"/>
 			<Col>
 				<Content>
 					<H1>Society of Women Engineers</H1>
@@ -58,7 +58,7 @@ return (
 			</Col>
 			<StyledCarousel images={sweAlbum} />
 		</Container>
-	</Section>
+	</section>
 );
 }
 

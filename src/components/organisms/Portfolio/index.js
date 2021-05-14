@@ -35,7 +35,7 @@ const Portfolio = () => {
   const { theme } = useGlobalState();
 
 	return (
-    <>
+    <section className={theme && `bg-club`}>
 			{/* <div className="fixed sticky pb-8 md:-mt-16 sm:w-1/4 items-center justify-center mx-auto text-center flex flex-row">
 				<ColorLink path="/app/portfolio#artist" icon="palette" color="red"/> 
 				<ColorLink path="/app/portfolio#engineer" icon="laptop" color="green"/> 
@@ -44,7 +44,7 @@ const Portfolio = () => {
 			<Art dark={theme} />
 			<ComputerGraphics dark={theme} />
 			<Leadership dark={theme} />
-		</>
+    </section>
 	);
 }
 

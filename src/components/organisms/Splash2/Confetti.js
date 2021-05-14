@@ -5,10 +5,10 @@ import seedrandom from "seedrandom";
 
 const confettiAnimation = keyframes`
 0% { transform: rotateZ(0deg) rotateY(0deg) rotateX(0deg) translate(0,0); }
-25% { transform: rotateZ(2deg) rotateY(120deg) rotateX(2deg) translate(-1vw,25vh); }
-50% { transform: rotateZ(5deg) rotateY(240deg) rotateX(0deg) translate(1vw,50vh); }
-75% { transform: rotateZ(2deg) rotateY(360deg) rotateX(2deg) translate(-1vw,75vh); }
-100% { transform: rotateZ(5deg) rotateY(480deg) rotateX(0deg) translate(1vw,95vh); }
+25% { transform: rotateZ(2deg) rotateY(120deg) rotateX(2deg) translate(-1vw,30vh); }
+50% { transform: rotateZ(5deg) rotateY(240deg) rotateX(0deg) translate(1vw,70vh); }
+75% { transform: rotateZ(2deg) rotateY(360deg) rotateX(2deg) translate(-1vw,100vh); }
+100% { transform: rotateZ(5deg) rotateY(480deg) rotateX(0deg) translate(1vw,130vh); }
 
 `
 

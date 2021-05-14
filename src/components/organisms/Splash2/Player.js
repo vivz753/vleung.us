@@ -16,7 +16,7 @@ const Player = ({ children, url}) => {
     <div className="relative" onClick={toggle}>
       {children}
       <div className="absolute text-center w-full inset-y-0 items-center flex justify-center text-yellow-700">
-        {audioPlaying ? (<FaPause className="animate-spin-slow w-8 h-8"/>) : (<FaPlay className="w-8 h-8" />)}
+        {audioPlaying ? (<FaPause className="animate-spin-slow w-6 h-6 md:w-8 md:h-8"/>) : (<FaPlay className="w-6 h-6 md:w-8 md:h-8" />)}
       </div>
     </div>
   );

@@ -27,35 +27,52 @@ const Splash2 = () => {
       <div className="w-full -mt-2">
         <ConfettiParty counter={dropped} /> 
       </div>
-      <div className="w-1/2 h-full text-center py-20">
-        <div className="jusitfy-end mx-auto flex flex-row w-full h-full">
-          <div className="w-1/3 h-full m-8 flex items-center justify-end">
-            <img className="rounded-lg" src={ProfilePic} alt="me" />
-          </div>
-          <div className={`w-2/3 font-regular text-left items-center justify-center flex flex-col ${theme ? `text-white` : `text-yellow-900`}`}>
-            <ul>
-              <li className="text-3xl py-2">Level 25</li>
-              <li className="text-2xl pb-4 flex flex-row items-center">Web Developer<GiAngelWings className="mx-2" /></li>
-              <li className="text-xl pb-2 flex flex-row items-center"><GiBroadsword className="mx-2" />MacBook Pro 2016</li>
-              <li className="text-xl pb-2 flex flex-row items-center"><GiShield className="mx-2" />Vim, VSCode</li>
-              <li className="text-xl pb-2 flex flex-row items-center"><GiOrbWand className="mx-2" />React, Tailwind CSS, Emotion, Styled Components</li>
-              <li className="text-xl pb-2 flex flex-row items-center"><GiBlackBook className="mx-2" />Javascript, C++, Python</li>
-            </ul>
+      <div className="w-full lg:w-4/5 xl:w-7/12 h-full text-center pt-12 px-4 sm:px-8 md:py-20">
+        {/* Top Screen */}
+        <div className="p-8 px-6 justify-center border-8 border-yellow-900 bg-yellow-800 md:rounded-t-xl rounded-t-full md:jusitfy-end mx-auto flex flex-col md:flex-row w-full h-full">
+          <div className="flex flex-col">
+            <div className="flex flex-col md:flex-row items-center justify-center">
+              {/* Profile Pic */}
+              <div className="px-8 sm:px-32 md:px-0 md:order-last relative w-full md:w-1/3 md:h-full my-8 flex items-center justify-center md:justify-end">
+                <div className="relative">
+                  {/* Ping */}
+                  <div className="absolute top-3 right-3">
+                    <span className="h-3 w-3 flex justify-center items-center">
+                      <span className="animate-ping absolute inline-flex h-4 w-4 rounded-full bg-green-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                    </span>
+                  </div>
+                  <img className="rounded-b-xl rounded-t-full md:rounded-xl" src={ProfilePic} alt="me" />
+                </div>
+              </div>
+              {/* Content */}
+              <div className={`md:order-first sm:w-5/6 border-8 border-yellow-900 bg-club rounded-xl md:mr-8 w-full md:w-2/3 pb-8 font-regular text-left items-center justify-center flex flex-col text-white`}>
+                <ul>
+                  <li className="text-center text-xl md:text-3xl py-8">Level 25</li>
+                  <li className="text-lg uppercase md:text-2xl pb-4 flex flex-row items-center"><GiAngelWings className="mx-2 w-8 h-6" />Web Developer</li>
+                  <li className="text-md md:text-xl pb-2 flex flex-row items-center"><GiBroadsword className="mx-2" />MacBook Pro 2016</li>
+                  <li className="text-md md:text-xl pb-2 flex flex-row items-center"><GiShield className="mx-2" />Vim, VSCode</li>
+                  <li className="text-md md:text-xl pb-2 flex flex-row items-center"><GiOrbWand className="mx-2" />React, Tailwind CSS, Emotion</li>
+                  <li className="text-md md:text-xl pb-2 flex flex-row items-center"><GiBlackBook className="mx-2" />Javascript, C++, Python</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="flex flex-row justify-evenly w-full py-16">
-          <button onClick={dropConfetti} className="text-center text-red-700 justify-center flex items-center bg-red-500 rounded-full w-32 h-32 border-red-700 border-b-8 hover:bg-red-600 focus:text-red-800">
-            <FaBirthdayCake className="w-8 h-8" />
+        {/* Bottom Screen & Buttons */}
+        <div className="flex px-4 sm:px-8 md:px-0 py-8 pb-14 mb-8 md:py-12 border-4 border-yellow-900 bg-yellow-900 rounded-b-xl flex-row justify-evenly w-full">
+          <button onClick={dropConfetti} className="text-center text-red-700 justify-center flex items-center bg-red-500 rounded-full w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 border-red-700 border-b-8 hover:bg-red-600 focus:text-red-800">
+            <FaBirthdayCake className="w-6 h-6 md:w-8 md:h-8" />
           </button>
           <Player 
             url="">
-            <button className="bg-yellow-500 rounded-full w-32 h-32 border-yellow-600 border-b-8 hover:bg-yellow-600 focus:bg-yellow-700 focus:border-yellow-200">
+            <button className="bg-yellow-500 rounded-full w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 border-yellow-600 border-b-8 hover:bg-yellow-600 focus:bg-yellow-700 focus:border-yellow-200">
             </button>
           </Player>
-          <button onClick={changeColor} className="text-center text-blue-700 justify-center flex items-center bg-blue-500 rounded-full w-32 h-32 border-blue-700 border-b-8 hover:bg-blue-600 focus:bg-blue-700 focus:border-blue-200">
+          <button onClick={changeColor} className="text-center text-blue-700 justify-center flex items-center bg-blue-500 rounded-full w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 border-blue-700 border-b-8 hover:bg-blue-600 focus:bg-blue-700 focus:border-blue-200">
             { theme
-              ? <FaSun className="w-8 h-8"/>
-              : <FaMoon className="w-8 h-8" />
+              ? <FaSun className="h-6 w-6 md:w-8 md:h-8"/>
+              : <FaMoon className="h-6 w-6 md:w-8 md:h-8" />
             }
           </button>
         </div>

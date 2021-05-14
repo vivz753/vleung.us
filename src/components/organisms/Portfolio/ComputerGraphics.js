@@ -1,6 +1,6 @@
 import React from 'react';
 import tw from 'twin.macro'
-import { Section, Container, Col, CenterDiv, Title, Bar, Content, H1, P } from './Format';
+import { Container, Col, CenterDiv, Title, Bar, Content, H1, P } from './Format';
 
 const ComputerGraphics = (props) => {
 
@@ -31,10 +31,10 @@ const VideoCard= (props) => (
 
 return (
 <div id="engineer">
-	<Section id="engineer" color={props.dark ? `black` : `green`}>
+	<section id="engineer" className={`${props.dark ? `bg-green-900 text-green-200 bg-opacity-50` : `bg-green-100`}`}>
 		<Container id="engineer">
 			<CenterDiv><Title>Computer Graphics</Title></CenterDiv>
-			<Bar color="green"/>
+			<Bar className="bg-green-500" />
 			<Col>
 				<Content>
 					<H1>2D/3D Simulations</H1>
@@ -61,7 +61,7 @@ return (
 				/>
 			</VideosContainer>
 		</Container>
-	</Section>
+	</section>
 </div>
 );
 

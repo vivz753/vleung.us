@@ -1,6 +1,6 @@
 import React from "react";
 import tw from "twin.macro"
-import { Section, Container, Col, CenterDiv, Title, Bar, Content, H1, P } from './Format';
+import { Container, Col, CenterDiv, Title, Bar, Content, H1, P } from './Format';
 import Gallery from 'react-grid-gallery';
 import { BiPalette } from 'react-icons/bi'
 
@@ -172,7 +172,7 @@ const IMAGES =
 const Art = (props) => {
 
 return (
-	<Section id="artist" color={props.dark ? `black` : `red`}>
+	<section id="artist" className={props.dark ? `bg-red-900 text-red-200 bg-opacity-50` : `bg-red-100`}>
 		<Container>
 			<CenterDiv>
         <Title>
@@ -180,7 +180,7 @@ return (
           Artwork
         </Title>
       </CenterDiv>
-			<Bar color="red"/>
+			<Bar className="bg-red-400"/>
 			<Col>
 				<Content>
 					<H1>Charcoal/Oil Studies</H1>
@@ -199,7 +199,7 @@ return (
 					</u>
 				</GalleryBox>
 		</Container>
-	</Section>
+	</section>
 );
 }
 

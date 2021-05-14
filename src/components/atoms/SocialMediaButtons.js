@@ -3,7 +3,7 @@ import tw from 'twin.macro'
 
 import { FaLinkedinIn, FaGithub, FaTwitter, FaInstagram } from 'react-icons/fa';
 
-const Style=tw`h-8 w-8`
+const Style=tw`w-6 h-6 md:h-8 md:w-8`
 
 const LogoButton = (props) =>
 (
