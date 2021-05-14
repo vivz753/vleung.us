@@ -49,7 +49,7 @@
     "cssnano": "4.1.10",
     "gatsby-plugin-emotion": "^4.3.10",
     "prettier": "2.0.5",
-    "tailwindcss": "1.5.2",
+    "tailwindcss": "2.1.2",
     "twin.macro": "^1.7.0"
   },
   "repository": {
