@@ -7,7 +7,7 @@ import { GiFlowerPot } from 'react-icons/gi'
 
 const MyFooter = (props) => {
   return (
-    <footer className={`${props.className} w-full ${props.dark && `bg-club text-white`}`}>
+    <footer className={`${props.className} ${props.dark && `bg-club text-white`}`}>
       <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
 				<div className="flex title-font font-medium items-center md:justify-start justify-center">
 					<p className="ml-3 text-2xl font-regular">

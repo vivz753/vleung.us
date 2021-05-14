@@ -8,9 +8,9 @@ function IndexPage() {
   })
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex bg-club justify-center items-center h-screen">
       <div className="animate-spin">
-        <FaCompactDisc className="animate-spin w-16 h-16 text-blue-500"/>
+        <FaCompactDisc className="w-16 h-16 text-red-500"/>
       </div>
     </div>
   );

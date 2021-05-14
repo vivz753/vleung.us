@@ -10,6 +10,9 @@ module.exports = {
       'regular': ['Regular', '-apple-system', 'BlinkMacSystemFont']
       },
       extend: {
+        animation: {
+         'spin-slow': 'spin 3s linear infinite' 
+        },
         colors: {
           // splash 1 & 2
           violet: '#4A12bb',
