@@ -79,7 +79,7 @@ const Splash2 = () => {
         </div>
         {/* Bottom Screen & Buttons */}
         <div className="flex px-4 sm:px-8 md:px-0 py-8 pb-14 mb-8 md:py-12 border-4 border-yellow-900 bg-yellow-900 rounded-b-xl flex-row justify-evenly w-full">
-          <button onClick={dropConfetti} className="text-center text-red-700 justify-center flex items-center bg-red-500 rounded-full w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 border-red-700 border-b-8 hover:bg-red-600 focus:text-red-800 focus:bg-red-700 focus:outline-none">
+          <button onClick={dropConfetti} className="text-center text-red-700 justify-center flex items-center bg-red-500 rounded-full w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 border-red-700 border-b-8 hover:bg-red-600 active:text-red-800 active:bg-red-700 focus:outline-none">
             <FaBirthdayCake className="w-6 h-6 md:w-8 md:h-8" />
           </button>
           <Player 
@@ -87,7 +87,7 @@ const Splash2 = () => {
             <button className="bg-yellow-500 rounded-full w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 border-yellow-600 border-b-8 hover:bg-yellow-600 focus:outline-none">
             </button>
           </Player>
-          <button onClick={changeColor} className="text-center text-blue-700 justify-center flex items-center bg-blue-500 rounded-full w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 border-blue-700 border-b-8 hover:bg-blue-600 focus:text-blue-800 focus:bg-blue-700 focus:outline-none">
+          <button onClick={changeColor} className="text-center text-blue-700 justify-center flex items-center bg-blue-500 rounded-full w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 border-blue-700 border-b-8 hover:bg-blue-600 active:text-blue-800 active:bg-blue-700 focus:outline-none">
             { theme
               ? <FaSun className="h-6 w-6 md:w-8 md:h-8"/>
               : <FaMoon className="h-6 w-6 md:w-8 md:h-8" />
