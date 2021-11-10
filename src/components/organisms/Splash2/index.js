@@ -3,7 +3,7 @@ import ConfettiParty from "./Confetti";
 import Player from "./Player";
 import { FaBirthdayCake, FaSun, FaMoon } from "react-icons/fa"
 import ProfilePic from '../../../images/vivian.jpg'
-import { GiBroadsword, GiOrbWand, GiAngelWings, GiBlackBook, GiShield } from "react-icons/gi"
+import { GiLargePaintBrush, GiBroadsword, GiOrbWand, GiAngelWings, GiBlackBook, GiShield } from "react-icons/gi"
 import { useGlobalState } from "../../../hooks/useGlobalState"
 
 const Splash2 = () => {
@@ -67,11 +67,12 @@ const Splash2 = () => {
                 </div>
                 <ul className="z-50">
                   <li className="text-center text-xl md:text-3xl py-8">Level 25</li>
-                  <li className="text-lg uppercase md:text-2xl pb-4 flex flex-row items-center"><GiAngelWings className="mx-2 w-8 h-6" />Web Developer</li>
+                  <li className="text-lg uppercase md:text-2xl pb-4 flex flex-row items-center"><GiAngelWings className="mx-2 w-8 h-6" />Artist & Web Developer</li>
                   <li className="text-md md:text-xl pb-2 flex flex-row items-center"><GiBroadsword className="mx-2" />MacBook Pro 2016</li>
                   <li className="text-md md:text-xl pb-2 flex flex-row items-center"><GiShield className="mx-2" />Vim, VSCode</li>
                   <li className="text-md md:text-xl pb-2 flex flex-row items-center"><GiOrbWand className="mx-2" />React, Tailwind CSS, Emotion</li>
                   <li className="text-md md:text-xl pb-2 flex flex-row items-center"><GiBlackBook className="mx-2" />Javascript, C++, Python</li>
+                  <li className="text-md md:text-xl pb-2 flex flex-row items-center"><GiLargePaintBrush className="mx-2" />Procreate, Adobe Photoshop</li>
                 </ul>
               </div>
             </div>
