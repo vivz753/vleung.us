@@ -4036,7 +4036,8 @@ var plugins = [{
   options: {
     "plugins": []
   }
-}]; // During bootstrap, we write requires at top of this file which looks like:
+}];
+// During bootstrap, we write requires at top of this file which looks like:
 // var plugins = [
 //   {
 //     plugin: require("/path/to/plugin1/gatsby-ssr.js"),
@@ -4048,31 +4049,28 @@ var plugins = [{
 //   },
 // ]
 
-const apis = __webpack_require__(/*! ./api-ssr-docs */ "./.cache/api-ssr-docs.js"); // Run the specified API in any plugins that have implemented it
+const apis = __webpack_require__(/*! ./api-ssr-docs */ "./.cache/api-ssr-docs.js");
 
-
+// Run the specified API in any plugins that have implemented it
 module.exports = (api, args, defaultReturn, argTransform) => {
   if (!apis[api]) {
     console.log(`This API doesn't exist`, api);
-  } // Run each plugin in series.
+  }
+
+  // Run each plugin in series.
   // eslint-disable-next-line no-undef
-
-
   let results = plugins.map(plugin => {
     if (!plugin.plugin[api]) {
       return undefined;
     }
-
     try {
       const result = plugin.plugin[api](args, plugin.options);
-
       if (result && argTransform) {
         args = argTransform({
           args,
           result
         });
       }
-
       return result;
     } catch (e) {
       if (plugin.name !== `default-site-plugin`) {
@@ -4080,13 +4078,12 @@ module.exports = (api, args, defaultReturn, argTransform) => {
         // so no point in annotating error message pointing out which plugin is root of the problem
         e.message += ` (from plugin: ${plugin.name})`;
       }
-
       throw e;
     }
-  }); // Filter out undefined results.
+  });
 
+  // Filter out undefined results.
   results = results.filter(result => typeof result !== `undefined`);
-
   if (results.length > 0) {
     return results;
   } else {
@@ -4146,6 +4143,7 @@ module.exports = (api, args, defaultReturn, argTransform) => {
  * }
  */
 exports.replaceRenderer = true;
+
 /**
  * Called after every page Gatsby server renders while building HTML so you can
  * set head and body components to be rendered in your `html.js`.
@@ -4208,8 +4206,8 @@ exports.replaceRenderer = true;
  *   setBodyAttributes(BodyAttributes)
  * }
  */
-
 exports.onRenderBody = true;
+
 /**
  * Called after every page Gatsby server renders while building HTML so you can
  * replace head components to be rendered in your `html.js`. This is useful if
@@ -4247,8 +4245,8 @@ exports.onRenderBody = true;
  *   replaceHeadComponents(headComponents)
  * }
  */
-
 exports.onPreRenderHTML = true;
+
 /**
  * Allow a plugin to wrap the page element.
  *
@@ -4274,8 +4272,8 @@ exports.onPreRenderHTML = true;
  *   return <Layout {...props}>{element}</Layout>
  * }
  */
-
 exports.wrapPageElement = true;
+
 /**
  * Allow a plugin to wrap the root element.
  *
@@ -4305,7 +4303,6 @@ exports.wrapPageElement = true;
  *   )
  * }
  */
-
 exports.wrapRootElement = true;
 
 /***/ }),
@@ -4398,36 +4395,35 @@ __webpack_require__.r(__webpack_exports__);
 
 const pathCache = new Map();
 let matchPaths = [];
-
 const trimPathname = rawPathname => {
-  const pathname = decodeURIComponent(rawPathname); // Remove the pathPrefix from the pathname.
-
-  const trimmedPathname = (0,_strip_prefix__WEBPACK_IMPORTED_MODULE_1__.default)(pathname, decodeURIComponent("")) // Remove any hashfragment
-  .split(`#`)[0] // Remove search query
+  const pathname = decodeURIComponent(rawPathname);
+  // Remove the pathPrefix from the pathname.
+  const trimmedPathname = (0,_strip_prefix__WEBPACK_IMPORTED_MODULE_1__.default)(pathname, decodeURIComponent(""))
+  // Remove any hashfragment
+  .split(`#`)[0]
+  // Remove search query
   .split(`?`)[0];
   return trimmedPathname;
 };
-
 function absolutify(path) {
   // If it's already absolute, return as-is
   if (path.startsWith(`/`) || path.startsWith(`https://`) || path.startsWith(`http://`)) {
     return path;
-  } // Calculate path relative to current location, adding a trailing slash to
+  }
+  // Calculate path relative to current location, adding a trailing slash to
   // match behavior of @reach/router
-
-
   return new URL(path, window.location.href + (window.location.href.endsWith(`/`) ? `` : `/`)).pathname;
 }
+
 /**
  * Set list of matchPaths
  *
  * @param {Array<{path: string, matchPath: string}>} value collection of matchPaths
  */
-
-
 const setMatchPaths = value => {
   matchPaths = value;
 };
+
 /**
  * Return a matchpath url
  * if `match-paths.json` contains `{ "/foo*": "/page1", ...}`, then
@@ -4436,7 +4432,6 @@ const setMatchPaths = value => {
  * @param {string} rawPathname A raw pathname
  * @return {string|null}
  */
-
 const findMatchPath = rawPathname => {
   const trimmedPathname = cleanPath(rawPathname);
   const pickPaths = matchPaths.map(({
@@ -4449,13 +4444,12 @@ const findMatchPath = rawPathname => {
     };
   });
   const path = (0,_gatsbyjs_reach_router_lib_utils__WEBPACK_IMPORTED_MODULE_0__.pick)(pickPaths, trimmedPathname);
-
   if (path) {
     return (0,_normalize_page_path__WEBPACK_IMPORTED_MODULE_2__.default)(path.route.originalPath);
   }
-
   return null;
 };
+
 /**
  * Return a matchpath params from reach/router rules
  * if `match-paths.json` contains `{ ":bar/*foo" }`, and the path is /baz/zaz/zoo
@@ -4465,7 +4459,6 @@ const findMatchPath = rawPathname => {
  * @param {string} rawPathname A raw pathname
  * @return {object}
  */
-
 const grabMatchParams = rawPathname => {
   const trimmedPathname = cleanPath(rawPathname);
   const pickPaths = matchPaths.map(({
@@ -4478,13 +4471,13 @@ const grabMatchParams = rawPathname => {
     };
   });
   const path = (0,_gatsbyjs_reach_router_lib_utils__WEBPACK_IMPORTED_MODULE_0__.pick)(pickPaths, trimmedPathname);
-
   if (path) {
     return path.params;
   }
-
   return {};
-}; // Given a raw URL path, returns the cleaned version of it (trim off
+};
+
+// Given a raw URL path, returns the cleaned version of it (trim off
 // `#` and query params), or if it matches an entry in
 // `match-paths.json`, its matched path is returned
 //
@@ -4492,23 +4485,19 @@ const grabMatchParams = rawPathname => {
 //
 // Or if `match-paths.json` contains `{ "/foo*": "/page1", ...}`, then
 // `/foo?bar=far` => `/page1`
-
 const findPath = rawPathname => {
   const trimmedPathname = trimPathname(absolutify(rawPathname));
-
   if (pathCache.has(trimmedPathname)) {
     return pathCache.get(trimmedPathname);
   }
-
   let foundPath = findMatchPath(trimmedPathname);
-
   if (!foundPath) {
     foundPath = cleanPath(rawPathname);
   }
-
   pathCache.set(trimmedPathname, foundPath);
   return foundPath;
 };
+
 /**
  * Clean a url and converts /index.html => /
  * E.g. `/foo?bar=far` => `/foo`
@@ -4516,15 +4505,12 @@ const findPath = rawPathname => {
  * @param {string} rawPathname A raw pathname
  * @return {string}
  */
-
 const cleanPath = rawPathname => {
   const trimmedPathname = trimPathname(absolutify(rawPathname));
   let foundPath = trimmedPathname;
-
   if (foundPath === `/index.html`) {
     foundPath = `/`;
   }
-
   foundPath = (0,_normalize_page_path__WEBPACK_IMPORTED_MODULE_2__.default)(foundPath);
   return foundPath;
 };
@@ -4572,7 +4558,6 @@ __webpack_require__.r(__webpack_exports__);
 
 const prefetchPathname = _loader__WEBPACK_IMPORTED_MODULE_5__.default.enqueue;
 const StaticQueryContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createContext({});
-
 function StaticQueryDataRenderer({
   staticQueryData,
   data,
@@ -4582,7 +4567,6 @@ function StaticQueryDataRenderer({
   const finalData = data ? data.data : staticQueryData[query] && staticQueryData[query].data;
   return (0,_emotion_core__WEBPACK_IMPORTED_MODULE_6__.jsx)((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, finalData && render(finalData), !finalData && (0,_emotion_core__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", null, "Loading (StaticQuery)"));
 }
-
 const StaticQuery = props => {
   const {
     data,
@@ -4597,18 +4581,16 @@ const StaticQuery = props => {
     staticQueryData: staticQueryData
   }));
 };
-
 const useStaticQuery = query => {
   var _context$query;
-
   if (typeof (react__WEBPACK_IMPORTED_MODULE_0___default().useContext) !== `function` && "development" === `development`) {
     throw new Error(`You're likely using a version of React that doesn't support Hooks\n` + `Please update React and ReactDOM to 16.8.0 or later to use the useStaticQuery hook.`);
   }
+  const context = react__WEBPACK_IMPORTED_MODULE_0___default().useContext(StaticQueryContext);
 
-  const context = react__WEBPACK_IMPORTED_MODULE_0___default().useContext(StaticQueryContext); // query is a stringified number like `3303882` when wrapped with graphql, If a user forgets
+  // query is a stringified number like `3303882` when wrapped with graphql, If a user forgets
   // to wrap the query in a grqphql, then casting it to a Number results in `NaN` allowing us to
   // catch the misuse of the API and give proper direction
-
   if (isNaN(Number(query))) {
     throw new Error(`useStaticQuery was called with a string but expects to be called using \`graphql\`. Try this:
 
@@ -4617,25 +4599,21 @@ import { useStaticQuery, graphql } from 'gatsby';
 useStaticQuery(graphql\`${query}\`);
 `);
   }
-
   if ((_context$query = context[query]) !== null && _context$query !== void 0 && _context$query.data) {
     return context[query].data;
   } else {
     throw new Error(`The result of this StaticQuery could not be fetched.\n\n` + `This is likely a bug in Gatsby and if refreshing the page does not fix it, ` + `please open an issue in https://github.com/gatsbyjs/gatsby/issues`);
   }
 };
-
 StaticQuery.propTypes = {
   data: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().object),
   query: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string.isRequired),
   render: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().func),
   children: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().func)
 };
-
 function graphql() {
   throw new Error(`It appears like Gatsby is misconfigured. Gatsby related \`graphql\` calls ` + `are supposed to only be evaluated at compile time, and then compiled away. ` + `Unfortunately, something went wrong and the query was left in the compiled code.\n\n` + `Unless your site has a complex or custom babel/Gatsby configuration this is likely a bug in Gatsby.`);
 }
-
 
 
 /***/ }),
@@ -4663,64 +4641,53 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * Available resource loading statuses
  */
-
 const PageResourceStatus = {
   /**
    * At least one of critical resources failed to load
    */
   Error: `error`,
-
   /**
    * Resources loaded successfully
    */
   Success: `success`
 };
-
 const preferDefault = m => m && m.default || m;
-
 const stripSurroundingSlashes = s => {
   s = s[0] === `/` ? s.slice(1) : s;
   s = s.endsWith(`/`) ? s.slice(0, -1) : s;
   return s;
 };
-
 const createPageDataUrl = path => {
   const fixedPath = path === `/` ? `index` : stripSurroundingSlashes(path);
   return `${""}/page-data/${fixedPath}/page-data.json`;
 };
-
 function doFetch(url, method = `GET`) {
   return new Promise((resolve, reject) => {
     const req = new XMLHttpRequest();
     req.open(method, url, true);
-
     req.onreadystatechange = () => {
       if (req.readyState == 4) {
         resolve(req);
       }
     };
-
     req.send(null);
   });
 }
-
 const doesConnectionSupportPrefetch = () => {
   if (`connection` in navigator && typeof navigator.connection !== `undefined`) {
     if ((navigator.connection.effectiveType || ``).includes(`2g`)) {
       return false;
     }
-
     if (navigator.connection.saveData) {
       return false;
     }
   }
-
   return true;
 };
-
 const toPageResources = (pageData, component = null) => {
   const page = {
     componentChunkName: pageData.componentChunkName,
@@ -4735,7 +4702,6 @@ const toPageResources = (pageData, component = null) => {
     page
   };
 };
-
 class BaseLoader {
   constructor(loadComponent, matchPaths) {
     this.inFlightNetworkRequests = new Map();
@@ -4763,16 +4729,14 @@ class BaseLoader {
     this.loadComponent = loadComponent;
     (0,_find_path__WEBPACK_IMPORTED_MODULE_2__.setMatchPaths)(matchPaths);
   }
-
   memoizedGet(url) {
     let inFlightPromise = this.inFlightNetworkRequests.get(url);
-
     if (!inFlightPromise) {
       inFlightPromise = doFetch(url, `GET`);
       this.inFlightNetworkRequests.set(url, inFlightPromise);
-    } // Prefer duplication with then + catch over .finally to prevent problems in ie11 + firefox
+    }
 
-
+    // Prefer duplication with then + catch over .finally to prevent problems in ie11 + firefox
     return inFlightPromise.then(response => {
       this.inFlightNetworkRequests.delete(url);
       return response;
@@ -4781,12 +4745,10 @@ class BaseLoader {
       throw err;
     });
   }
-
   setApiRunner(apiRunner) {
     this.apiRunner = apiRunner;
     this.prefetchDisabled = apiRunner(`disableCorePrefetching`).some(a => a);
   }
-
   fetchPageDataJson(loadObj) {
     const {
       pagePath,
@@ -4797,73 +4759,69 @@ class BaseLoader {
       const {
         status,
         responseText
-      } = req; // Handle 200
+      } = req;
 
+      // Handle 200
       if (status === 200) {
         try {
           const jsonPayload = JSON.parse(responseText);
-
           if (jsonPayload.path === undefined) {
             throw new Error(`not a valid pageData response`);
           }
-
           return Object.assign(loadObj, {
             status: PageResourceStatus.Success,
             payload: jsonPayload
           });
-        } catch (err) {// continue regardless of error
+        } catch (err) {
+          // continue regardless of error
         }
-      } // Handle 404
+      }
 
-
+      // Handle 404
       if (status === 404 || status === 200) {
         // If the request was for a 404 page and it doesn't exist, we're done
         if (pagePath === `/404.html`) {
           return Object.assign(loadObj, {
             status: PageResourceStatus.Error
           });
-        } // Need some code here to cache the 404 request. In case
+        }
+
+        // Need some code here to cache the 404 request. In case
         // multiple loadPageDataJsons result in 404s
-
-
         return this.fetchPageDataJson(Object.assign(loadObj, {
           pagePath: `/404.html`,
           notFound: true
         }));
-      } // handle 500 response (Unrecoverable)
+      }
 
-
+      // handle 500 response (Unrecoverable)
       if (status === 500) {
         return Object.assign(loadObj, {
           status: PageResourceStatus.Error
         });
-      } // Handle everything else, including status === 0, and 503s. Should retry
+      }
 
-
+      // Handle everything else, including status === 0, and 503s. Should retry
       if (retries < 3) {
         return this.fetchPageDataJson(Object.assign(loadObj, {
           retries: retries + 1
         }));
-      } // Retried 3 times already, result is an error.
+      }
 
-
+      // Retried 3 times already, result is an error.
       return Object.assign(loadObj, {
         status: PageResourceStatus.Error
       });
     });
   }
-
   loadPageDataJson(rawPath) {
     const pagePath = (0,_find_path__WEBPACK_IMPORTED_MODULE_2__.findPath)(rawPath);
-
     if (this.pageDataDb.has(pagePath)) {
       const pageData = this.pageDataDb.get(pagePath);
-
       if (true) {
         return Promise.resolve(pageData);
       }
     }
-
     return this.fetchPageDataJson({
       pagePath
     }).then(pageData => {
@@ -4871,18 +4829,15 @@ class BaseLoader {
       return pageData;
     });
   }
-
   findMatchPath(rawPath) {
     return (0,_find_path__WEBPACK_IMPORTED_MODULE_2__.findMatchPath)(rawPath);
-  } // TODO check all uses of this and whether they use undefined for page resources not exist
+  }
 
-
+  // TODO check all uses of this and whether they use undefined for page resources not exist
   loadPage(rawPath) {
     const pagePath = (0,_find_path__WEBPACK_IMPORTED_MODULE_2__.findPath)(rawPath);
-
     if (this.pageDb.has(pagePath)) {
       const page = this.pageDb.get(pagePath);
-
       if (true) {
         if (page.error) {
           return {
@@ -4890,24 +4845,19 @@ class BaseLoader {
             status: page.status
           };
         }
-
         return Promise.resolve(page.payload);
       }
     }
-
     if (this.inFlightDb.has(pagePath)) {
       return this.inFlightDb.get(pagePath);
     }
-
     const inFlightPromise = Promise.all([this.loadAppData(), this.loadPageDataJson(pagePath)]).then(allData => {
       const result = allData[1];
-
       if (result.status === PageResourceStatus.Error) {
         return {
           status: PageResourceStatus.Error
         };
       }
-
       let pageData = result.payload;
       const {
         componentChunkName,
@@ -4917,24 +4867,20 @@ class BaseLoader {
       const componentChunkPromise = this.loadComponent(componentChunkName).then(component => {
         finalResult.createdAt = new Date();
         let pageResources;
-
         if (!component || component instanceof Error) {
           finalResult.status = PageResourceStatus.Error;
           finalResult.error = component;
         } else {
           finalResult.status = PageResourceStatus.Success;
-
           if (result.notFound === true) {
             finalResult.notFound = true;
           }
-
           pageData = Object.assign(pageData, {
             webpackCompilationHash: allData[0] ? allData[0].webpackCompilationHash : ``
           });
           pageResources = toPageResources(pageData, component);
-        } // undefined if final result is an error
-
-
+        }
+        // undefined if final result is an error
         return pageResources;
       });
       const staticQueryBatchPromise = Promise.all(staticQueryHashes.map(staticQueryHash => {
@@ -4946,7 +4892,6 @@ class BaseLoader {
             jsonPayload
           };
         }
-
         return this.memoizedGet(`${""}/page-data/sq/d/${staticQueryHash}.json`).then(req => {
           const jsonPayload = JSON.parse(req.responseText);
           return {
@@ -4969,9 +4914,9 @@ class BaseLoader {
       });
       return Promise.all([componentChunkPromise, staticQueryBatchPromise]).then(([pageResources, staticQueryResults]) => {
         let payload;
-
         if (pageResources) {
-          payload = { ...pageResources,
+          payload = {
+            ...pageResources,
             staticQueryResults
           };
           finalResult.payload = payload;
@@ -4980,18 +4925,16 @@ class BaseLoader {
             pageResources: payload
           });
         }
-
         this.pageDb.set(pagePath, finalResult);
-
         if (finalResult.error) {
           return {
             error: finalResult.error,
             status: finalResult.status
           };
         }
-
         return payload;
-      }) // when static-query fail to load we throw a better error
+      })
+      // when static-query fail to load we throw a better error
       .catch(err => {
         return {
           error: err,
@@ -5007,19 +4950,16 @@ class BaseLoader {
     });
     this.inFlightDb.set(pagePath, inFlightPromise);
     return inFlightPromise;
-  } // returns undefined if the page does not exists in cache
+  }
 
-
+  // returns undefined if the page does not exists in cache
   loadPageSync(rawPath, options = {}) {
     const pagePath = (0,_find_path__WEBPACK_IMPORTED_MODULE_2__.findPath)(rawPath);
-
     if (this.pageDb.has(pagePath)) {
       const pageData = this.pageDb.get(pagePath);
-
       if (pageData.payload) {
         return pageData.payload;
       }
-
       if (options !== null && options !== void 0 && options.withErrorDetails) {
         return {
           error: pageData.error,
@@ -5027,46 +4967,41 @@ class BaseLoader {
         };
       }
     }
-
     return undefined;
   }
-
   shouldPrefetch(pagePath) {
     // Skip prefetching if we know user is on slow or constrained connection
     if (!doesConnectionSupportPrefetch()) {
       return false;
-    } // Check if the page exists.
+    }
 
-
+    // Check if the page exists.
     if (this.pageDb.has(pagePath)) {
       return false;
     }
-
     return true;
   }
-
   prefetch(pagePath) {
     if (!this.shouldPrefetch(pagePath)) {
       return false;
-    } // Tell plugins with custom prefetching logic that they should start
+    }
+
+    // Tell plugins with custom prefetching logic that they should start
     // prefetching this path.
-
-
     if (!this.prefetchTriggered.has(pagePath)) {
       this.apiRunner(`onPrefetchPathname`, {
         pathname: pagePath
       });
       this.prefetchTriggered.add(pagePath);
-    } // If a plugin has disabled core prefetching, stop now.
+    }
 
-
+    // If a plugin has disabled core prefetching, stop now.
     if (this.prefetchDisabled) {
       return false;
     }
-
-    const realPath = (0,_find_path__WEBPACK_IMPORTED_MODULE_2__.findPath)(pagePath); // Todo make doPrefetch logic cacheable
+    const realPath = (0,_find_path__WEBPACK_IMPORTED_MODULE_2__.findPath)(pagePath);
+    // Todo make doPrefetch logic cacheable
     // eslint-disable-next-line consistent-return
-
     this.doPrefetch(realPath).then(() => {
       if (!this.prefetchCompleted.has(pagePath)) {
         this.apiRunner(`onPostPrefetchPathname`, {
@@ -5077,25 +5012,22 @@ class BaseLoader {
     });
     return true;
   }
-
   doPrefetch(pagePath) {
     const pageDataUrl = createPageDataUrl(pagePath);
     return (0,_prefetch__WEBPACK_IMPORTED_MODULE_0__.default)(pageDataUrl, {
       crossOrigin: `anonymous`,
       as: `fetch`
-    }).then(() => // This was just prefetched, so will return a response from
+    }).then(() =>
+    // This was just prefetched, so will return a response from
     // the cache instead of making another request to the server
     this.loadPageDataJson(pagePath));
   }
-
   hovering(rawPath) {
     this.loadPage(rawPath);
   }
-
   getResourceURLsForPathname(rawPath) {
     const pagePath = (0,_find_path__WEBPACK_IMPORTED_MODULE_2__.findPath)(rawPath);
     const page = this.pageDataDb.get(pagePath);
-
     if (page) {
       const pageResources = toPageResources(page.payload);
       return [...createComponentUrls(pageResources.page.componentChunkName), createPageDataUrl(pagePath)];
@@ -5103,13 +5035,11 @@ class BaseLoader {
       return null;
     }
   }
-
   isPageNotFound(rawPath) {
     const pagePath = (0,_find_path__WEBPACK_IMPORTED_MODULE_2__.findPath)(rawPath);
     const page = this.pageDb.get(pagePath);
     return !page || page.notFound;
   }
-
   loadAppData(retries = 0) {
     return this.memoizedGet(`${""}/page-data/app-data.json`).then(req => {
       const {
@@ -5117,61 +5047,51 @@ class BaseLoader {
         responseText
       } = req;
       let appData;
-
       if (status !== 200 && retries < 3) {
         // Retry 3 times incase of non-200 responses
         return this.loadAppData(retries + 1);
-      } // Handle 200
+      }
 
-
+      // Handle 200
       if (status === 200) {
         try {
           const jsonPayload = JSON.parse(responseText);
-
           if (jsonPayload.webpackCompilationHash === undefined) {
             throw new Error(`not a valid app-data response`);
           }
-
           appData = jsonPayload;
-        } catch (err) {// continue regardless of error
+        } catch (err) {
+          // continue regardless of error
         }
       }
-
       return appData;
     });
   }
-
 }
-
 const createComponentUrls = componentChunkName => (window.___chunkMapping[componentChunkName] || []).map(chunk => "" + chunk);
-
 class ProdLoader extends BaseLoader {
   constructor(asyncRequires, matchPaths) {
     const loadComponent = chunkName => {
       if (!asyncRequires.components[chunkName]) {
         throw new Error(`We couldn't find the correct component chunk with the name ${chunkName}`);
       }
-
-      return asyncRequires.components[chunkName]().then(preferDefault) // loader will handle the case when component is error
+      return asyncRequires.components[chunkName]().then(preferDefault)
+      // loader will handle the case when component is error
       .catch(err => err);
     };
-
     super(loadComponent, matchPaths);
   }
-
   doPrefetch(pagePath) {
     return super.doPrefetch(pagePath).then(result => {
       if (result.status !== PageResourceStatus.Success) {
         return Promise.resolve();
       }
-
       const pageData = result.payload;
       const chunkName = pageData.componentChunkName;
       const componentUrls = createComponentUrls(chunkName);
       return Promise.all(componentUrls.map(_prefetch__WEBPACK_IMPORTED_MODULE_0__.default)).then(() => pageData);
     });
   }
-
   loadPageDataJson(rawPath) {
     return super.loadPageDataJson(rawPath).then(data => {
       if (data.notFound) {
@@ -5185,18 +5105,16 @@ class ProdLoader extends BaseLoader {
             return {
               status: PageResourceStatus.Error
             };
-          } // if HEAD request wasn't 200, return notFound result
+          }
+
+          // if HEAD request wasn't 200, return notFound result
           // and show 404 page
-
-
           return data;
         });
       }
-
       return data;
     });
   }
-
 }
 let instance;
 const setLoader = _loader => {
@@ -5240,15 +5158,12 @@ __webpack_require__.r(__webpack_exports__);
   if (path === undefined) {
     return path;
   }
-
   if (path === `/`) {
     return `/`;
   }
-
   if (path.charAt(path.length - 1) === `/`) {
     return path.slice(0, -1);
   }
-
   return path;
 });
 
@@ -5269,9 +5184,7 @@ const support = function (feature) {
   if (typeof document === `undefined`) {
     return false;
   }
-
   const fakeLink = document.createElement(`link`);
-
   try {
     if (fakeLink.relList && typeof fakeLink.relList.supports === `function`) {
       return fakeLink.relList.supports(feature);
@@ -5279,17 +5192,14 @@ const support = function (feature) {
   } catch (err) {
     return false;
   }
-
   return false;
 };
-
 const linkPrefetchStrategy = function (url, options) {
   return new Promise((resolve, reject) => {
     if (typeof document === `undefined`) {
       reject();
       return;
     }
-
     const link = document.createElement(`link`);
     link.setAttribute(`rel`, `prefetch`);
     link.setAttribute(`href`, url);
@@ -5302,12 +5212,10 @@ const linkPrefetchStrategy = function (url, options) {
     parentElement.appendChild(link);
   });
 };
-
 const xhrPrefetchStrategy = function (url) {
   return new Promise((resolve, reject) => {
     const req = new XMLHttpRequest();
     req.open(`GET`, url, true);
-
     req.onload = () => {
       if (req.status === 200) {
         resolve();
@@ -5315,21 +5223,17 @@ const xhrPrefetchStrategy = function (url) {
         reject();
       }
     };
-
     req.send(null);
   });
 };
-
 const supportedPrefetchStrategy = support(`prefetch`) ? linkPrefetchStrategy : xhrPrefetchStrategy;
 const preFetched = {};
-
 const prefetch = function (url, options) {
   return new Promise(resolve => {
     if (preFetched[url]) {
       resolve();
       return;
     }
-
     supportedPrefetchStrategy(url, options).then(() => {
       resolve();
       preFetched[url] = true;
@@ -5348,7 +5252,6 @@ const prefetch = function (url, options) {
 /***/ ((module) => {
 
 const preferDefault = m => m && m.default || m;
-
 if (false) {} else if (false) {} else {
   module.exports = () => null;
 }
@@ -5380,19 +5283,17 @@ __webpack_require__.r(__webpack_exports__);
  * Remove a prefix from a string. Return the input string if the given prefix
  * isn't found.
  */
+
 function stripPrefix(str, prefix = ``) {
   if (!prefix) {
     return str;
   }
-
   if (str === prefix) {
     return `/`;
   }
-
   if (str.startsWith(`${prefix}/`)) {
     return str.slice(prefix.length);
   }
-
   return str;
 }
 
@@ -5408,11 +5309,8 @@ function stripPrefix(str, prefix = ``) {
 
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
-
 var _fs = _interopRequireDefault(__webpack_require__(/*! fs */ "fs"));
-
 var _path = _interopRequireDefault(__webpack_require__(/*! path */ "path"));
-
 exports.favicons = [{
   src: "favicon-32x32.png",
   sizes: "32x32",
@@ -5465,7 +5363,6 @@ exports.doesIconExist = function doesIconExist(srcIcon) {
     if (e.code !== "ENOENT") {
       throw e;
     }
-
     return false;
   }
 };
@@ -5474,18 +5371,14 @@ exports.doesIconExist = function doesIconExist(srcIcon) {
  * @param {string} digest The digest of the icon provided in the plugin's options.
  */
 
-
 exports.addDigestToPath = function (path, digest, method) {
   if (method === "name") {
     var parsedPath = _path.default.parse(path);
-
     return parsedPath.dir + "/" + parsedPath.name + "-" + digest + parsedPath.ext;
   }
-
   if (method === "query") {
     return path + "?v=" + digest;
   }
-
   return path;
 };
 
@@ -5501,35 +5394,29 @@ exports.addDigestToPath = function (path, digest, method) {
 
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
-
 var _interopRequireWildcard = __webpack_require__(/*! @babel/runtime/helpers/interopRequireWildcard */ "./node_modules/@babel/runtime/helpers/interopRequireWildcard.js");
-
 var React = _interopRequireWildcard(__webpack_require__(/*! react */ "react"));
-
 var _gatsby = __webpack_require__(/*! gatsby */ "./.cache/gatsby-browser-entry.js");
-
 var _common = __webpack_require__(/*! ./common.js */ "./node_modules/gatsby-plugin-manifest/common.js");
+var _getManifestPathname = _interopRequireDefault(__webpack_require__(/*! ./get-manifest-pathname */ "./node_modules/gatsby-plugin-manifest/get-manifest-pathname.js"));
 
-var _getManifestPathname = _interopRequireDefault(__webpack_require__(/*! ./get-manifest-pathname */ "./node_modules/gatsby-plugin-manifest/get-manifest-pathname.js")); // TODO: remove for v3
-
-
+// TODO: remove for v3
 var withPrefix = _gatsby.withAssetPrefix || _gatsby.withPrefix;
-
 exports.onRenderBody = function (_ref, _ref2) {
   var setHeadComponents = _ref.setHeadComponents,
-      _ref$pathname = _ref.pathname,
-      pathname = _ref$pathname === void 0 ? "/" : _ref$pathname;
+    _ref$pathname = _ref.pathname,
+    pathname = _ref$pathname === void 0 ? "/" : _ref$pathname;
   var localize = _ref2.localize,
-      legacy = _ref2.legacy,
-      cacheBusting = _ref2.cache_busting_mode,
-      cacheDigest = _ref2.cacheDigest,
-      icon = _ref2.icon,
-      pluginIcons = _ref2.icons,
-      insertFaviconLinkTag = _ref2.include_favicon,
-      insertMetaTag = _ref2.theme_color_in_head,
-      theme_color = _ref2.theme_color,
-      crossOrigin = _ref2.crossOrigin; // We use this to build a final array to pass as the argument to setHeadComponents at the end of onRenderBody.
-
+    legacy = _ref2.legacy,
+    cacheBusting = _ref2.cache_busting_mode,
+    cacheDigest = _ref2.cacheDigest,
+    icon = _ref2.icon,
+    pluginIcons = _ref2.icons,
+    insertFaviconLinkTag = _ref2.include_favicon,
+    insertMetaTag = _ref2.theme_color_in_head,
+    theme_color = _ref2.theme_color,
+    crossOrigin = _ref2.crossOrigin;
+  // We use this to build a final array to pass as the argument to setHeadComponents at the end of onRenderBody.
   var headComponents = [];
   var srcIconExists = !!icon;
   var icons = pluginIcons || _common.defaultIcons;
@@ -5545,7 +5432,6 @@ exports.onRenderBody = function (_ref, _ref2) {
           type: "image/svg+xml"
         }));
       }
-
       _common.favicons.forEach(function (favicon) {
         headComponents.push( /*#__PURE__*/React.createElement("link", {
           key: "gatsby-plugin-manifest-icon-link-png",
@@ -5556,7 +5442,6 @@ exports.onRenderBody = function (_ref, _ref2) {
       });
     }
   } // Add manifest link tag.
-
 
   headComponents.push( /*#__PURE__*/React.createElement("link", {
     key: "gatsby-plugin-manifest-link",
@@ -5572,7 +5457,6 @@ exports.onRenderBody = function (_ref, _ref2) {
       content: theme_color
     }));
   }
-
   if (legacy) {
     icons.forEach(function (icon) {
       headComponents.push( /*#__PURE__*/React.createElement("link", {
@@ -5583,7 +5467,6 @@ exports.onRenderBody = function (_ref, _ref2) {
       }));
     });
   }
-
   setHeadComponents(headComponents);
   return true;
 };
@@ -5601,6 +5484,7 @@ exports.onRenderBody = function (_ref, _ref2) {
 
 exports.__esModule = true;
 exports.default = void 0;
+
 /**
  * Get a manifest filename depending on localized pathname
  *
@@ -5608,25 +5492,19 @@ exports.default = void 0;
  * @param {Array<{start_url: string, lang: string}>} localizedManifests
  * @return string
  */
-
 var _default = function _default(pathname, localizedManifests) {
   var defaultFilename = "manifest.webmanifest";
-
   if (!Array.isArray(localizedManifests)) {
     return defaultFilename;
   }
-
   var localizedManifest = localizedManifests.find(function (app) {
     return pathname.startsWith(app.start_url);
   });
-
   if (!localizedManifest) {
     return defaultFilename;
   }
-
   return "manifest_" + localizedManifest.lang + ".webmanifest";
 };
-
 exports.default = _default;
 
 /***/ }),
@@ -5641,36 +5519,29 @@ exports.default = _default;
 
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
-
 exports.__esModule = true;
 exports.onRenderBody = exports.onPreRenderHTML = void 0;
-
 var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
-
 var onPreRenderHTML = function onPreRenderHTML(_ref) {
   var getHeadComponents = _ref.getHeadComponents,
-      pathname = _ref.pathname,
-      replaceHeadComponents = _ref.replaceHeadComponents;
+    pathname = _ref.pathname,
+    replaceHeadComponents = _ref.replaceHeadComponents;
   if (pathname !== "/offline-plugin-app-shell-fallback/") return;
   var headComponents = getHeadComponents();
   var filteredHeadComponents = headComponents.filter(function (_ref2) {
     var type = _ref2.type,
-        props = _ref2.props;
+      props = _ref2.props;
     return !(type === "link" && props.as === "fetch" && props.rel === "preload" && (props.href.startsWith("/static/d/") || props.href.startsWith("/page-data/")));
   });
   replaceHeadComponents(filteredHeadComponents);
 };
-
 exports.onPreRenderHTML = onPreRenderHTML;
-
 var onRenderBody = function onRenderBody(_ref3) {
   var pathname = _ref3.pathname,
-      setHeadComponents = _ref3.setHeadComponents;
-
+    setHeadComponents = _ref3.setHeadComponents;
   if (pathname !== "/offline-plugin-app-shell-fallback/") {
     return;
   }
-
   setHeadComponents([/*#__PURE__*/_react.default.createElement("noscript", {
     key: "disable-offline-shell"
   }, /*#__PURE__*/_react.default.createElement("meta", {
@@ -5678,7 +5549,6 @@ var onRenderBody = function onRenderBody(_ref3) {
     content: "0;url=/.gatsby-plugin-offline:api=disableOfflineShell&redirect=true"
   }))]);
 };
-
 exports.onRenderBody = onRenderBody;
 
 /***/ }),
@@ -5694,28 +5564,21 @@ exports.onRenderBody = onRenderBody;
 
 exports.__esModule = true;
 exports.onRenderBody = void 0;
-
 var _reactHelmet = __webpack_require__(/*! react-helmet */ "./node_modules/react-helmet/es/Helmet.js");
-
 var onRenderBody = function onRenderBody(_ref) {
   var setHeadComponents = _ref.setHeadComponents,
-      setHtmlAttributes = _ref.setHtmlAttributes,
-      setBodyAttributes = _ref.setBodyAttributes;
-
+    setHtmlAttributes = _ref.setHtmlAttributes,
+    setBodyAttributes = _ref.setBodyAttributes;
   var helmet = _reactHelmet.Helmet.renderStatic(); // These action functions were added partway through the Gatsby 1.x cycle.
-
 
   if (setHtmlAttributes) {
     setHtmlAttributes(helmet.htmlAttributes.toComponent());
   }
-
   if (setBodyAttributes) {
     setBodyAttributes(helmet.bodyAttributes.toComponent());
   }
-
   setHeadComponents([helmet.title.toComponent(), helmet.link.toComponent(), helmet.meta.toComponent(), helmet.noscript.toComponent(), helmet.script.toComponent(), helmet.style.toComponent(), helmet.base.toComponent()]);
 };
-
 exports.onRenderBody = onRenderBody;
 
 /***/ }),
@@ -10231,7 +10094,7 @@ module.exports = checkPropTypes;
 
 
 
-var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/react-is/index.js");
+var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/prop-types/node_modules/react-is/index.js");
 var assign = __webpack_require__(/*! object-assign */ "./node_modules/object-assign/index.js");
 
 var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "./node_modules/prop-types/lib/ReactPropTypesSecret.js");
@@ -10831,7 +10694,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
  */
 
 if (true) {
-  var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/react-is/index.js");
+  var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/prop-types/node_modules/react-is/index.js");
 
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
@@ -10861,6 +10724,214 @@ if (true) {
 var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
+
+
+/***/ }),
+
+/***/ "./node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+/** @license React v16.13.1
+ * react-is.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+
+
+if (true) {
+  (function() {
+'use strict';
+
+// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+// nor polyfill, then a plain number is used for performance.
+var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
+// (unstable) APIs that have been removed. Can we remove the symbols?
+
+var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
+var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
+var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
+var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
+var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
+var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
+
+function isValidElementType(type) {
+  return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
+}
+
+function typeOf(object) {
+  if (typeof object === 'object' && object !== null) {
+    var $$typeof = object.$$typeof;
+
+    switch ($$typeof) {
+      case REACT_ELEMENT_TYPE:
+        var type = object.type;
+
+        switch (type) {
+          case REACT_ASYNC_MODE_TYPE:
+          case REACT_CONCURRENT_MODE_TYPE:
+          case REACT_FRAGMENT_TYPE:
+          case REACT_PROFILER_TYPE:
+          case REACT_STRICT_MODE_TYPE:
+          case REACT_SUSPENSE_TYPE:
+            return type;
+
+          default:
+            var $$typeofType = type && type.$$typeof;
+
+            switch ($$typeofType) {
+              case REACT_CONTEXT_TYPE:
+              case REACT_FORWARD_REF_TYPE:
+              case REACT_LAZY_TYPE:
+              case REACT_MEMO_TYPE:
+              case REACT_PROVIDER_TYPE:
+                return $$typeofType;
+
+              default:
+                return $$typeof;
+            }
+
+        }
+
+      case REACT_PORTAL_TYPE:
+        return $$typeof;
+    }
+  }
+
+  return undefined;
+} // AsyncMode is deprecated along with isAsyncMode
+
+var AsyncMode = REACT_ASYNC_MODE_TYPE;
+var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+var ContextConsumer = REACT_CONTEXT_TYPE;
+var ContextProvider = REACT_PROVIDER_TYPE;
+var Element = REACT_ELEMENT_TYPE;
+var ForwardRef = REACT_FORWARD_REF_TYPE;
+var Fragment = REACT_FRAGMENT_TYPE;
+var Lazy = REACT_LAZY_TYPE;
+var Memo = REACT_MEMO_TYPE;
+var Portal = REACT_PORTAL_TYPE;
+var Profiler = REACT_PROFILER_TYPE;
+var StrictMode = REACT_STRICT_MODE_TYPE;
+var Suspense = REACT_SUSPENSE_TYPE;
+var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
+
+function isAsyncMode(object) {
+  {
+    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+      hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+
+      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
+    }
+  }
+
+  return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+}
+function isConcurrentMode(object) {
+  return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+}
+function isContextConsumer(object) {
+  return typeOf(object) === REACT_CONTEXT_TYPE;
+}
+function isContextProvider(object) {
+  return typeOf(object) === REACT_PROVIDER_TYPE;
+}
+function isElement(object) {
+  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+}
+function isForwardRef(object) {
+  return typeOf(object) === REACT_FORWARD_REF_TYPE;
+}
+function isFragment(object) {
+  return typeOf(object) === REACT_FRAGMENT_TYPE;
+}
+function isLazy(object) {
+  return typeOf(object) === REACT_LAZY_TYPE;
+}
+function isMemo(object) {
+  return typeOf(object) === REACT_MEMO_TYPE;
+}
+function isPortal(object) {
+  return typeOf(object) === REACT_PORTAL_TYPE;
+}
+function isProfiler(object) {
+  return typeOf(object) === REACT_PROFILER_TYPE;
+}
+function isStrictMode(object) {
+  return typeOf(object) === REACT_STRICT_MODE_TYPE;
+}
+function isSuspense(object) {
+  return typeOf(object) === REACT_SUSPENSE_TYPE;
+}
+
+exports.AsyncMode = AsyncMode;
+exports.ConcurrentMode = ConcurrentMode;
+exports.ContextConsumer = ContextConsumer;
+exports.ContextProvider = ContextProvider;
+exports.Element = Element;
+exports.ForwardRef = ForwardRef;
+exports.Fragment = Fragment;
+exports.Lazy = Lazy;
+exports.Memo = Memo;
+exports.Portal = Portal;
+exports.Profiler = Profiler;
+exports.StrictMode = StrictMode;
+exports.Suspense = Suspense;
+exports.isAsyncMode = isAsyncMode;
+exports.isConcurrentMode = isConcurrentMode;
+exports.isContextConsumer = isContextConsumer;
+exports.isContextProvider = isContextProvider;
+exports.isElement = isElement;
+exports.isForwardRef = isForwardRef;
+exports.isFragment = isFragment;
+exports.isLazy = isLazy;
+exports.isMemo = isMemo;
+exports.isPortal = isPortal;
+exports.isProfiler = isProfiler;
+exports.isStrictMode = isStrictMode;
+exports.isSuspense = isSuspense;
+exports.isValidElementType = isValidElementType;
+exports.typeOf = typeOf;
+  })();
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/prop-types/node_modules/react-is/index.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/prop-types/node_modules/react-is/index.js ***!
+  \****************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+if (false) {} else {
+  module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ "./node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js");
+}
 
 
 /***/ }),
@@ -11950,214 +12021,6 @@ HelmetExport.renderStatic = HelmetExport.rewind;
 
 /***/ }),
 
-/***/ "./node_modules/react-is/cjs/react-is.development.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/react-is/cjs/react-is.development.js ***!
-  \***********************************************************/
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-/** @license React v16.13.1
- * react-is.development.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-
-
-
-
-if (true) {
-  (function() {
-'use strict';
-
-// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
-// nor polyfill, then a plain number is used for performance.
-var hasSymbol = typeof Symbol === 'function' && Symbol.for;
-var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
-var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
-var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
-var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
-var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
-var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
-var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
-// (unstable) APIs that have been removed. Can we remove the symbols?
-
-var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
-var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
-var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
-var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
-var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
-var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
-var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
-var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
-var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
-var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
-var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
-
-function isValidElementType(type) {
-  return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
-  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
-}
-
-function typeOf(object) {
-  if (typeof object === 'object' && object !== null) {
-    var $$typeof = object.$$typeof;
-
-    switch ($$typeof) {
-      case REACT_ELEMENT_TYPE:
-        var type = object.type;
-
-        switch (type) {
-          case REACT_ASYNC_MODE_TYPE:
-          case REACT_CONCURRENT_MODE_TYPE:
-          case REACT_FRAGMENT_TYPE:
-          case REACT_PROFILER_TYPE:
-          case REACT_STRICT_MODE_TYPE:
-          case REACT_SUSPENSE_TYPE:
-            return type;
-
-          default:
-            var $$typeofType = type && type.$$typeof;
-
-            switch ($$typeofType) {
-              case REACT_CONTEXT_TYPE:
-              case REACT_FORWARD_REF_TYPE:
-              case REACT_LAZY_TYPE:
-              case REACT_MEMO_TYPE:
-              case REACT_PROVIDER_TYPE:
-                return $$typeofType;
-
-              default:
-                return $$typeof;
-            }
-
-        }
-
-      case REACT_PORTAL_TYPE:
-        return $$typeof;
-    }
-  }
-
-  return undefined;
-} // AsyncMode is deprecated along with isAsyncMode
-
-var AsyncMode = REACT_ASYNC_MODE_TYPE;
-var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
-var ContextConsumer = REACT_CONTEXT_TYPE;
-var ContextProvider = REACT_PROVIDER_TYPE;
-var Element = REACT_ELEMENT_TYPE;
-var ForwardRef = REACT_FORWARD_REF_TYPE;
-var Fragment = REACT_FRAGMENT_TYPE;
-var Lazy = REACT_LAZY_TYPE;
-var Memo = REACT_MEMO_TYPE;
-var Portal = REACT_PORTAL_TYPE;
-var Profiler = REACT_PROFILER_TYPE;
-var StrictMode = REACT_STRICT_MODE_TYPE;
-var Suspense = REACT_SUSPENSE_TYPE;
-var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
-
-function isAsyncMode(object) {
-  {
-    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
-      hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
-
-      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
-    }
-  }
-
-  return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
-}
-function isConcurrentMode(object) {
-  return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
-}
-function isContextConsumer(object) {
-  return typeOf(object) === REACT_CONTEXT_TYPE;
-}
-function isContextProvider(object) {
-  return typeOf(object) === REACT_PROVIDER_TYPE;
-}
-function isElement(object) {
-  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
-}
-function isForwardRef(object) {
-  return typeOf(object) === REACT_FORWARD_REF_TYPE;
-}
-function isFragment(object) {
-  return typeOf(object) === REACT_FRAGMENT_TYPE;
-}
-function isLazy(object) {
-  return typeOf(object) === REACT_LAZY_TYPE;
-}
-function isMemo(object) {
-  return typeOf(object) === REACT_MEMO_TYPE;
-}
-function isPortal(object) {
-  return typeOf(object) === REACT_PORTAL_TYPE;
-}
-function isProfiler(object) {
-  return typeOf(object) === REACT_PROFILER_TYPE;
-}
-function isStrictMode(object) {
-  return typeOf(object) === REACT_STRICT_MODE_TYPE;
-}
-function isSuspense(object) {
-  return typeOf(object) === REACT_SUSPENSE_TYPE;
-}
-
-exports.AsyncMode = AsyncMode;
-exports.ConcurrentMode = ConcurrentMode;
-exports.ContextConsumer = ContextConsumer;
-exports.ContextProvider = ContextProvider;
-exports.Element = Element;
-exports.ForwardRef = ForwardRef;
-exports.Fragment = Fragment;
-exports.Lazy = Lazy;
-exports.Memo = Memo;
-exports.Portal = Portal;
-exports.Profiler = Profiler;
-exports.StrictMode = StrictMode;
-exports.Suspense = Suspense;
-exports.isAsyncMode = isAsyncMode;
-exports.isConcurrentMode = isConcurrentMode;
-exports.isContextConsumer = isContextConsumer;
-exports.isContextProvider = isContextProvider;
-exports.isElement = isElement;
-exports.isForwardRef = isForwardRef;
-exports.isFragment = isFragment;
-exports.isLazy = isLazy;
-exports.isMemo = isMemo;
-exports.isPortal = isPortal;
-exports.isProfiler = isProfiler;
-exports.isStrictMode = isStrictMode;
-exports.isSuspense = isSuspense;
-exports.isValidElementType = isValidElementType;
-exports.typeOf = typeOf;
-  })();
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/react-is/index.js":
-/*!****************************************!*\
-  !*** ./node_modules/react-is/index.js ***!
-  \****************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-
-
-if (false) {} else {
-  module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ "./node_modules/react-is/cjs/react-is.development.js");
-}
-
-
-/***/ }),
-
 /***/ "./node_modules/react-side-effect/lib/index.js":
 /*!*****************************************************!*\
   !*** ./node_modules/react-side-effect/lib/index.js ***!
@@ -12293,24 +12156,24 @@ module.exports = withSideEffect;
 /***/ }),
 
 /***/ "react-dom/server":
-/*!***********************************************************************************************!*\
-  !*** external "/Users/carrotjuicelol/dev/vivz753/vleung.us/node_modules/react-dom/server.js" ***!
-  \***********************************************************************************************/
+/*!****************************************************************************************!*\
+  !*** external "/Users/vivz753/dev/vivz753/vleung.us/node_modules/react-dom/server.js" ***!
+  \****************************************************************************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("/Users/carrotjuicelol/dev/vivz753/vleung.us/node_modules/react-dom/server.js");;
+module.exports = require("/Users/vivz753/dev/vivz753/vleung.us/node_modules/react-dom/server.js");;
 
 /***/ }),
 
 /***/ "react":
-/*!******************************************************************************************!*\
-  !*** external "/Users/carrotjuicelol/dev/vivz753/vleung.us/node_modules/react/index.js" ***!
-  \******************************************************************************************/
+/*!***********************************************************************************!*\
+  !*** external "/Users/vivz753/dev/vivz753/vleung.us/node_modules/react/index.js" ***!
+  \***********************************************************************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("/Users/carrotjuicelol/dev/vivz753/vleung.us/node_modules/react/index.js");;
+module.exports = require("/Users/vivz753/dev/vivz753/vleung.us/node_modules/react/index.js");;
 
 /***/ }),
 
@@ -12439,21 +12302,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // import testRequireError from "./test-require-error"
+
+// import testRequireError from "./test-require-error"
 // For some extremely mysterious reason, webpack adds the above module *after*
 // this module so that when this code runs, testRequireError is undefined.
 // So in the meantime, we'll just inline it.
-
-
 
 const testRequireError = (moduleName, err) => {
   const regex = new RegExp(`Error: Cannot find module\\s.${moduleName}`);
   const firstLine = err.toString().split(`\n`)[0];
   return regex.test(firstLine);
 };
-
 let Html;
-
 try {
   Html = __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../src/html'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 } catch (err) {
@@ -12464,7 +12324,6 @@ try {
     process.exit();
   }
 }
-
 Html = Html && Html.__esModule ? Html.default : Html;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (({
   pagePath
@@ -12480,49 +12339,36 @@ Html = Html && Html.__esModule ? Html.default : Html;
   let postBodyComponents = [];
   let bodyProps = {};
   let htmlStr;
-
   const setHeadComponents = components => {
     headComponents = headComponents.concat(components);
   };
-
   const setHtmlAttributes = attributes => {
     htmlAttributes = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()(htmlAttributes, attributes);
   };
-
   const setBodyAttributes = attributes => {
     bodyAttributes = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()(bodyAttributes, attributes);
   };
-
   const setPreBodyComponents = components => {
     preBodyComponents = preBodyComponents.concat(components);
   };
-
   const setPostBodyComponents = components => {
     postBodyComponents = postBodyComponents.concat(components);
   };
-
   const setBodyProps = props => {
     bodyProps = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, bodyProps, props);
   };
-
   const getHeadComponents = () => headComponents;
-
   const replaceHeadComponents = components => {
     headComponents = components;
   };
-
   const getPreBodyComponents = () => preBodyComponents;
-
   const replacePreBodyComponents = components => {
     preBodyComponents = components;
   };
-
   const getPostBodyComponents = () => postBodyComponents;
-
   const replacePostBodyComponents = components => {
     postBodyComponents = components;
   };
-
   _api_runner_ssr__WEBPACK_IMPORTED_MODULE_3___default()(`onRenderBody`, {
     setHeadComponents,
     setHtmlAttributes,
@@ -12541,7 +12387,8 @@ Html = Html && Html.__esModule ? Html.default : Html;
     replacePostBodyComponents,
     pathname: pagePath
   });
-  const htmlElement = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(Html, { ...bodyProps,
+  const htmlElement = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(Html, {
+    ...bodyProps,
     body: ``,
     headComponents: headComponents.concat([(0,_emotion_core__WEBPACK_IMPORTED_MODULE_4__.jsx)("script", {
       key: `io`,
