@@ -58,9 +58,10 @@ function CV () {
           {/* Employment */}
           <Text style={Title} text="Employment" />
           <LeftDivA>
-  <Job title="Senior Web Components Engineer" date="Jul 2021 - current" location="Infor, New York NY USA" />
-            <Job title="Front-End Software Engineer" date="Mar 2021 - April 2021" location="The Power of Music LTD, London England UK" />
-            <Job title="Full Stack Software Engineer" date="Dec 2020 - Feb 2021" location="AutoviseAI LLC, Gujarat India" />
+            <Job title="Front-End Software Engineer" date="Dec 2021 - current" location="Coinvise" />
+            <Job title="Senior Web Components Engineer" date="Jul 2021 - Dec 2021" location="Infor, New York NY USA" />
+            <Job title="Front-End Software Engineer" date="Mar 2021 - Apr 2021" location="The Power of Music, London England UK" />
+            <Job title="Full Stack Software Engineer" date="Dec 2020 - Feb 2021" location="AutoviseAI" />
             <Job title="C++ Software Engineer" date="Nov 2019 - Sep 2020" location="Auris Health, Redwood City CA USA" />
             <Job title="Machine Learning Intern" date="Jun 2019 - Sep 2019" location="Clover Network, Sunnyvale CA USA" />
             <Job title="Front-End Software Intern" date="Oct 2018 - Mar 2019" location="IBM Silicon Valley Labs, San Jose CA USA" />

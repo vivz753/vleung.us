@@ -70,9 +70,9 @@ const Splash2 = () => {
                   <li className="text-lg uppercase md:text-2xl pb-4 flex flex-row items-center"><GiAngelWings className="mx-2 w-8 h-6" />Artist & Web Developer</li>
                   <li className="text-md md:text-xl pb-2 flex flex-row items-center"><GiBroadsword className="mx-2" />MacBook Pro 2016</li>
                   <li className="text-md md:text-xl pb-2 flex flex-row items-center"><GiShield className="mx-2" />Vim, VSCode</li>
-                  <li className="text-md md:text-xl pb-2 flex flex-row items-center"><GiOrbWand className="mx-2" />React, Tailwind CSS, Emotion</li>
-                  <li className="text-md md:text-xl pb-2 flex flex-row items-center"><GiBlackBook className="mx-2" />Javascript, C++, Python</li>
-                  <li className="text-md md:text-xl pb-2 flex flex-row items-center"><GiLargePaintBrush className="mx-2" />Procreate, Adobe Photoshop</li>
+                  <li className="text-md md:text-xl pb-2 flex flex-row items-center"><GiOrbWand className="mx-2" />React, Tailwind CSS</li>
+                  <li className="text-md md:text-xl pb-2 flex flex-row items-center"><GiBlackBook className="mx-2" />Typescript, JSX, HTML5, CSS3</li>
+                  <li className="text-md md:text-xl pb-2 flex flex-row items-center"><GiLargePaintBrush className="mx-2" />Clip Studio, Procreate, Adobe Photoshop</li>
                 </ul>
               </div>
             </div>
