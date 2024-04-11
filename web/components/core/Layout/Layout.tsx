@@ -1,5 +1,4 @@
 import Head from "next/head"
-import { useRouter } from "next/router"
 import { FC } from "react"
 // import { Footer } from "./Footer"
 import { Navbar } from "./Navbar"
@@ -14,7 +13,7 @@ export const Layout: FC<React.PropsWithChildren> = ({ children }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="min-h-screen relative flex w-full flex-col overflow-auto border border-red-500">
+        <div className="relative flex min-h-screen w-full flex-col overflow-auto">
           <Navbar />
           {/* Page w/ content */}
           {children}

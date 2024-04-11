@@ -4,6 +4,7 @@ import { GiAngelWings, GiBlackBook, GiBroadsword, GiLargePaintBrush, GiOrbWand, 
 export default function Home() {
   return (
     <div className="flex min-h-screen w-full flex-col items-center justify-center">
+      {/* TODO: add rainbow css animation from vleung.art */}
       <div className="relative flex h-[450px] w-full max-w-[719px] flex-col items-center rounded-2xl border-4 border-yellow-700 bg-yellow-700 md:flex-row lg:w-1/2">
         {/* MAIN SCREEN */}
         <div className="relative h-full w-3/4 p-8">

@@ -1,6 +1,8 @@
 import { NextPage } from "next"
 import Link from "next/link"
 import { FC } from "react"
+import { FaGithubSquare, FaLinkedin } from "react-icons/fa"
+import { MdEmail } from "react-icons/md"
 
 const CV: NextPage = () => {
   return (
@@ -9,10 +11,18 @@ const CV: NextPage = () => {
         <div className="flex flex-col items-center justify-center gap-4 py-8">
           <div className="text-2xl">Vivian Leung</div>
           <div className="flex flex-col items-center gap-2 lg:flex-row lg:gap-8">
-            {/* TODO: insert icons */}
-            <div>vivz753@gmail.com</div>
-            <Link href="https://github.com/vivz753">https://github.com/vivz753</Link>
-            <Link href="https://linkedin.com/in/vivz753">https://linkedin.com/in/vivz753</Link>
+            <div className="flex flex-row items-center gap-2">
+              <MdEmail className="h-8 w-8" />
+              <div>vivz753@gmail.com</div>
+            </div>
+            <Link className="flex flex-row items-center gap-2" href="https://github.com/vivz753">
+              <FaGithubSquare className="h-8 w-8" />
+              github.com/vivz753
+            </Link>
+            <Link href="https://linkedin.com/in/vivz753" className="flex flex-row items-center gap-2">
+              <FaLinkedin className="h-8 w-8" />
+              linkedin.com/in/vivz753
+            </Link>
           </div>
         </div>
         <div className="-ml-4 py-4 text-2xl lg:-ml-12">Experience</div>

@@ -1,7 +1,6 @@
 import clsx from "clsx"
 import Link from "next/link"
 import { FC } from "react"
-import Clock from "react-live-clock"
 
 const hexColor = (color: string) =>
   color === "pink"
@@ -22,7 +21,7 @@ const hexColor = (color: string) =>
 
 export const ColorLink: FC<{ text: string; href: string }> = ({ text, href }) => {
   return (
-    <Link href={href} className={clsx(`hover:text-pink-500`)}>
+    <Link href={href} className={clsx(`text-xl text-white hover:text-pink-400`)}>
       {text}
     </Link>
   )
@@ -30,12 +29,12 @@ export const ColorLink: FC<{ text: string; href: string }> = ({ text, href }) =>
 
 export const Navbar: FC = () => {
   return (
-    <div className="absolute bg-pink-100 flex w-full flex-row items-center gap-24 py-10 px-24">
+    <div className="absolute flex w-full flex-row items-center gap-16 bg-pink-200 px-24 py-10">
       {/* Title */}
       <ColorLink href="/" text="vleung" />
 
       {/* Menu */}
-      <div className="flex w-full flex-row items-center gap-24">
+      <div className="flex w-full flex-row items-center gap-8">
         <ColorLink href="/cv/" text="CV" />
         <ColorLink href="/portfolio/" text="Portfolio" />
       </div>
