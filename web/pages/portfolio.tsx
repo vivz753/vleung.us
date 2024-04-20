@@ -3,27 +3,30 @@ import { FC } from "react"
 const Portfolio: NextPage = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center pt-24">
-      <div className="flex h-full w-full flex-col items-center bg-pink-900 px-8 py-24 text-pink-200 lg:px-16">
+      {/* ART */}
+      {/* Insert art store items, finished paintings */}
+      {/* Idea: use Sanity.io to manage image content */}
+      {/* <div className="flex h-full w-full flex-col items-center bg-pink-900 px-8 py-24 text-pink-200 lg:px-16">
         <div className="py-2 text-4xl font-medium">Art</div>
-        {/* Insert art store items, finished paintings */}
-      </div>
+      </div> */}
+      {/* E-COMMERCE */}
       <div className="flex h-full w-full flex-col items-center bg-blue-900 px-8 py-24 text-blue-200 lg:px-16">
         <div className="py-2 text-4xl font-medium">E-Commerce</div>
         <div className="my-8 h-[1px] w-full rounded-3xl border-2 border-blue-500" />
-        {/* Insert iframe of artstore website or screenshots/video of site */}
         <div className="flex flex-col items-center justify-evenly py-8 lg:flex-row">
           <div className="min-w-max py-4 text-2xl font-medium lg:px-40">Art store</div>
           <div className="font-regular text-center text-base leading-relaxed lg:text-left">
             {`A fully functional, custom web store built using Typescript / Next.js / Stripe. This is mainly a personal
             project that I have worked on for about a year, from 2023 to 2024, mainly to challenge myself as a software
-            developer / designer and also to create something practical -- a platform for people to purchase the quirky
+            developer / designer and also to create something practical—a platform for people to purchase the quirky
             art created by me and my friends.`}
           </div>
         </div>
         <div className="flex w-full justify-center gap-24 lg:flex-row">
-          <div className="flex w-full flex-col lg:w-[375px]">
+          <div className="flex w-full shrink-0 flex-col lg:w-[350px]">
             <div className="my-8 hidden text-xl font-medium lg:flex">Mobile</div>
-            <div className="relative my-8 max-h-[85vh] min-h-[650px] overflow-hidden rounded-lg bg-white lg:my-0">
+            {/* Add a drop down for screen types */}
+            <div className="relative my-8 h-[85vh] max-h-[85vh] min-h-[650px] overflow-hidden rounded-lg bg-white lg:my-0">
               <iframe
                 title={"title"}
                 width="100%"
@@ -34,7 +37,7 @@ const Portfolio: NextPage = () => {
               />
             </div>
           </div>
-          <div className="hidden w-full flex-col lg:flex">
+          <div className="hidden w-full flex-col justify-center lg:flex 2xl:w-[1280px]">
             <div className="my-8 text-xl font-medium">Desktop</div>
             <div className="relative h-[85vh] overflow-hidden rounded-lg bg-white xl:w-full 2xl:w-[1280px]">
               <iframe
@@ -49,7 +52,48 @@ const Portfolio: NextPage = () => {
           </div>
         </div>
       </div>
-      <div className="flex h-full w-full flex-col items-center bg-green-900 px-8 py-24 text-green-200 lg:px-16">
+      {/* MATERIALS DESIGNER */}
+      <div className="flex h-full w-full flex-col items-center bg-orange-900 px-8 py-24 text-orange-200 lg:px-16">
+        <div className="py-2 text-4xl font-medium">IDE / Visualizer</div>
+        <div className="my-8 h-[1px] w-full rounded-3xl border-2 border-orange-500" />
+        <div className="flex flex-col items-center justify-evenly py-8 lg:flex-row">
+          <div className="min-w-max py-4 text-2xl font-medium lg:px-40">Materials Designer</div>
+          <div className="font-regular text-center text-base leading-relaxed lg:text-left">
+            {`This is a mock app I built for a job interview. The company asked interviewees to create a single-page application which can render atoms in a 3D space. The arrangement of atoms in a crystal, or crystal lattice, can be scientifically analyzed to determine its properties, strengths, and weaknesses. In practice, this tool would help make informed decisions about which materials would be most suitable for an industrial product.`}
+          </div>
+        </div>
+        <div className="flex w-full justify-center gap-24 lg:flex-row">
+          <div className="flex w-full shrink-0 flex-col lg:w-[350px]">
+            <div className="my-8 hidden text-xl font-medium lg:flex">Mobile</div>
+            {/* Add a drop down for screen types */}
+            <div className="relative my-8 h-[85vh] max-h-[85vh] min-h-[650px] overflow-hidden rounded-lg bg-white lg:my-0">
+              <iframe
+                title={"title"}
+                width="100%"
+                height="100%"
+                src={"https://materials-designer.vercel.app/"}
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+          <div className="hidden w-full flex-col justify-center lg:flex 2xl:w-[1280px]">
+            <div className="my-8 text-xl font-medium">Desktop</div>
+            <div className="relative h-[85vh] overflow-hidden rounded-lg bg-white xl:w-full 2xl:w-[1280px]">
+              <iframe
+                title={"title"}
+                width="100%"
+                height="100%"
+                src={"https://materials-designer.vercel.app/"}
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* COMPUTER GRAPHICS */}
+      <div className="flex h-full min-h-screen w-full flex-col items-center bg-green-900 px-8 py-24 text-green-200 lg:px-16">
         <div className="py-2 text-4xl font-medium">Computer Graphics</div>
         <div className="my-8 h-[1px] w-full rounded-3xl border-2 border-green-500" />
         <div className="flex flex-col items-center justify-evenly py-8 lg:flex-row">
