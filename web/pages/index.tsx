@@ -19,28 +19,28 @@ export default function Home() {
               <div className="aniamte-pulse w-1/6 bg-blue-800 bg-opacity-90"></div>
             </div>
             <ul className="absolute z-50 flex flex-col items-start text-white">
-              <li className="w-full py-8 text-center text-xl md:text-3xl">Level 27</li>
-              <li className="flex flex-row items-center pb-4 text-lg uppercase md:text-2xl">
+              <li className="w-full py-8 text-center text-xl md:text-2xl">Level 27</li>
+              <li className="flex flex-row items-center pb-4 text-lg uppercase md:text-xl">
                 <GiAngelWings className="mx-2 h-6 w-8" />
                 Web Developer & Artist
               </li>
-              <li className="text-md flex flex-row items-center pb-2 md:text-xl">
+              <li className="text-md flex flex-row items-center pb-2 md:text-lg">
                 <GiBroadsword className="mx-2" />
                 MacOS, Windows, Linux
               </li>
-              <li className="text-md flex flex-row items-center pb-2 md:text-xl">
+              <li className="text-md flex flex-row items-center pb-2 md:text-lg">
                 <GiShield className="mx-2" />
                 VSCode, Vim
               </li>
-              <li className="text-md flex flex-row items-center pb-2 md:text-xl">
+              <li className="text-md flex flex-row items-center pb-2 md:text-lg">
                 <GiOrbWand className="mx-2" />
                 React / Tailwind CSS / Typescript
               </li>
-              <li className="text-md flex flex-row items-center pb-2 md:text-xl">
+              <li className="text-md flex flex-row items-center pb-2 md:text-lg">
                 <GiBlackBook className="mx-2" />
                 C++, Python, Bash
               </li>
-              <li className="text-md flex flex-row items-center pb-2 md:text-xl">
+              <li className="text-md flex flex-row items-center pb-2 md:text-lg">
                 <GiLargePaintBrush className="mx-2" />
                 Procreate, Adobe Photoshop
               </li>

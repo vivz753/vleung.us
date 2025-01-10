@@ -21,7 +21,7 @@ const hexColor = (color: string) =>
 
 export const ColorLink: FC<{ text: string; href: string }> = ({ text, href }) => {
   return (
-    <Link href={href} className={clsx(`text-xl text-white hover:text-pink-400`)}>
+    <Link href={href} className={clsx(`text-xl text-pink-400 hover:text-white`)}>
       {text}
     </Link>
   )
