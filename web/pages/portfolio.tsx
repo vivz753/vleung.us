@@ -31,7 +31,7 @@ const Portfolio: NextPage = () => {
                 title={"title"}
                 width="100%"
                 height="100%"
-                src={"https://carrotsandhummus.art"}
+                src={"https://carrotsandhummus.vercel.app/shoppe"}
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
@@ -44,7 +44,7 @@ const Portfolio: NextPage = () => {
                 title={"title"}
                 width="100%"
                 height="100%"
-                src={"https://carrotsandhummus.art"}
+                src={"https://carrotsandhummus.vercel.app/shoppe"}
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
