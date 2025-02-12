@@ -3,9 +3,14 @@ import { GiAngelWings, GiBlackBook, GiBroadsword, GiLargePaintBrush, GiOrbWand, 
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen w-full flex-col items-center justify-center">
+    <div
+      style={{
+        cursor: "url('/favicon.ico'), auto",
+      }}
+      className="flex min-h-screen w-full flex-col items-center justify-center"
+    >
       {/* TODO: add rainbow css animation from vleung.art */}
-      <div className="relative flex h-[450px] w-full max-w-[719px] flex-col items-center rounded-2xl border-4 border-yellow-700 bg-yellow-700 md:flex-row lg:w-1/2">
+      <div className="relative flex h-[500px] w-full flex-col items-center rounded-2xl border-4 border-yellow-700 bg-yellow-700 md:flex-row lg:w-[750px]">
         {/* MAIN SCREEN */}
         <div className="relative h-full w-3/4 p-8">
           <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-2xl border-8 border-yellow-900">
@@ -48,8 +53,8 @@ export default function Home() {
           </div>
         </div>
         {/* SIDE PANEL */}
-        <div className="flex h-full flex-col justify-evenly p-8">
-          <div className="relative h-[150px] w-[150px] overflow-hidden rounded-3xl border-4 border-yellow-900">
+        <div className="flex h-full flex-col justify-evenly pr-8">
+          <div className="relative h-[180px] w-[180px] overflow-hidden rounded-3xl border-4 border-yellow-900">
             <Image alt="portrait" src="/images/vivian.jpg" style={{ objectFit: "contain" }} width={200} height={200} />
           </div>
           {/* <div className="flex w-full flex-row justify-evenly">

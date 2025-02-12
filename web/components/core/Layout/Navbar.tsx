@@ -32,7 +32,6 @@ export const Navbar: FC = () => {
     <div className="absolute flex w-full flex-row items-center gap-16 bg-pink-200 px-24 py-10">
       {/* Title */}
       <ColorLink href="/" text="vleung" />
-
       {/* Menu */}
       <div className="flex w-full flex-row items-center gap-8">
         <ColorLink href="/cv/" text="CV" />

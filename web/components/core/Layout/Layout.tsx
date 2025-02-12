@@ -7,7 +7,7 @@ export const Layout: FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <>
       <Head>
-        <title>Vivian Leung Web Dev</title>
+        <title>vleung.us</title>
         <meta name="description" content="Portfolio of Vivian Leung" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
