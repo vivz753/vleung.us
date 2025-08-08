@@ -205,20 +205,38 @@ const LogoLink: FC<{ link: string; label: string; icon: Icon }> = ({ link, label
 
 const CV: NextPage = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center px-4 pt-8 lg:px-24">
-      <div className="flex w-full max-w-[719px] flex-col py-24">
-        <div className="flex flex-col items-center justify-center gap-4 py-8">
-          <div className="relative h-48 w-48 overflow-clip rounded-full  bg-red-500">
-            <Image alt="portrait" src="/images/me-mimi-profile.png" fill style={{ objectFit: "cover" }} />
+    <div className="flex min-h-screen flex-col items-center justify-center px-4 pt-[108px] lg:px-24">
+      <div className="flex w-full max-w-[719px] flex-col py-12">
+        <section className="grid items-center justify-evenly lg:grid-cols-3 ">
+          <div className="flex flex-col items-center ">
+            <div className="relative mb-2 h-48 w-48 overflow-clip rounded-full  bg-red-500">
+              <Image alt="portrait" src="/images/me-mimi-profile.png" fill style={{ objectFit: "cover" }} />
+            </div>
+            <span className="text-3xl">Vivian Leung</span>
+            <span className="text-xl">Web Developer</span>
           </div>
-          <div className="text-3xl">Vivian Leung</div>
-          <div className="text-xl">Web Developer</div>
-          <div className="flex flex-col items-center gap-2 lg:flex-row lg:gap-8">
-            <LogoLink link="mailto:vivz753@gmail.com" label="vivz753@gmail.com" icon={Icon.MAIL} />
-            <LogoLink link="https://github.com/vivz753" label="github.com/vivz753" icon={Icon.GITHUB} />
-            <LogoLink link="https://linkedin.com/in/vivz753" label="linkedin.com/in/vivz753" icon={Icon.LINKEDIN} />
+          <div className="order-3 flex h-full flex-col items-center lg:order-2 ">
+            <span className="my-4 text-2xl">Skills</span>
+            <div className="grid h-full lg:grid-cols-1 grid-cols-2 gap-x-8 justify-between">
+              <span className="text-lg">• Typescript</span>
+              <span className="text-lg">• React.js</span>
+              <span className="text-lg">• Git</span>
+              <span className="text-lg">• OpenAPI</span>
+              <span className="text-lg">• Linux/Unix CLI</span>
+              <span className="text-lg">• Go</span>
+              <span className="text-lg">• C++</span>
+              <span className="text-lg">• SQL</span>
+            </div>
           </div>
-        </div>
+          <div className="order-2 flex h-full flex-col items-center lg:order-3 ">
+            <span className="my-4 text-2xl">Contact</span>
+            <div className="flex h-full  flex-col justify-evenly">
+              <LogoLink link="mailto:vivz753@gmail.com" label="vivz753@gmail.com" icon={Icon.MAIL} />
+              <LogoLink link="https://github.com/vivz753" label="github.com/vivz753" icon={Icon.GITHUB} />
+              <LogoLink link="https://linkedin.com/in/vivz753" label="linkedin.com/in/vivz753" icon={Icon.LINKEDIN} />
+            </div>
+          </div>
+        </section>
         <Title>Experience</Title>
         {experience.map(({ title, organization, location, date, link }) => (
           <Job
