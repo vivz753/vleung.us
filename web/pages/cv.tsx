@@ -1,19 +1,11 @@
+import { Entry, Icon } from "@types"
 import clsx from "clsx"
 import { NextPage } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import React, { FC } from "react"
 import { FaGithubSquare, FaLinkedin } from "react-icons/fa"
 import { MdEmail } from "react-icons/md"
-import Image from "next/image"
-
-interface Entry {
-  title: string
-  organization: string
-  location: string
-  date: string
-  description?: string
-  link?: string
-}
 
 const experience: Entry[] = [
   {
@@ -182,12 +174,6 @@ const awardsCertifications: Entry[] = [
   },
 ]
 
-enum Icon {
-  GITHUB,
-  MAIL,
-  LINKEDIN,
-}
-
 const logoLinkHoverStyle = "group-hover:text-pink-300"
 const LogoLink: FC<{ link: string; label: string; icon: Icon }> = ({ link, label, icon }) => (
   <a href={link} className="group flex flex-row items-center gap-2">
@@ -205,76 +191,105 @@ const LogoLink: FC<{ link: string; label: string; icon: Icon }> = ({ link, label
 
 const CV: NextPage = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center px-4 pt-[108px] lg:px-24">
-      <div className="flex w-full max-w-[719px] flex-col py-12">
-        <section className="grid items-center justify-evenly lg:grid-cols-3 ">
-          <div className="flex flex-col items-center ">
-            <div className="relative mb-2 h-48 w-48 overflow-clip rounded-full  bg-red-500">
-              <Image alt="portrait" src="/images/me-mimi-profile.png" fill style={{ objectFit: "cover" }} />
-            </div>
-            <span className="text-3xl">Vivian Leung</span>
-            <span className="text-xl">Web Developer</span>
+    <div className="flex h-full min-h-screen w-full items-center pt-[108px] ">
+      <main className="grid lg:grid-cols-[minmax(230px,_450px)_minmax(774px,_1fr)]">
+        <aside className="flex h-full w-full flex-col">
+          <div className="fixed sticky top-[0vh] w-full py-[5vh] lg:h-[100vh]">
+            <section className="grid h-full items-center justify-center gap-4">
+              <div className="flex flex-col items-center ">
+                <div className="relative mb-2 h-48 w-48 overflow-clip rounded-full">
+                  <Image
+                    alt="Profile picture of Vivian with her cat, Mimi"
+                    src="/images/me-mimi-profile.png"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+                <span className="text-3xl">Vivian Leung</span>
+                <span className="text-xl">Web Developer</span>
+              </div>
+              <div className="order-3 flex flex-col items-center lg:order-2 ">
+                <span className="my-2 text-2xl">Skills</span>
+                <div className="grid h-full grid-cols-2 gap-x-8 lg:grid-cols-1">
+                  <span className="text-lg">• Typescript</span>
+                  <span className="text-lg">• React.js</span>
+                  <span className="text-lg">• Git</span>
+                  <span className="text-lg">• OpenAPI</span>
+                  <span className="text-lg">• Linux/Unix CLI</span>
+                  <span className="text-lg">• Go</span>
+                  <span className="text-lg">• C++</span>
+                  <span className="text-lg">• SQL</span>
+                </div>
+              </div>
+              <div className="order-2 flex flex-col items-center lg:order-3 ">
+                <span className="my-2 text-2xl">Contact</span>
+                <div className="flex h-full flex-col">
+                  <LogoLink link="mailto:vivz753@gmail.com" label="vivz753@gmail.com" icon={Icon.MAIL} />
+                  <LogoLink link="https://github.com/vivz753" label="github.com/vivz753" icon={Icon.GITHUB} />
+                  <LogoLink
+                    link="https://linkedin.com/in/vivz753"
+                    label="linkedin.com/in/vivz753"
+                    icon={Icon.LINKEDIN}
+                  />
+                </div>
+              </div>
+            </section>
           </div>
-          <div className="order-3 flex h-full flex-col items-center lg:order-2 ">
-            <span className="my-4 text-2xl">Skills</span>
-            <div className="grid h-full lg:grid-cols-1 grid-cols-2 gap-x-8 justify-between">
-              <span className="text-lg">• Typescript</span>
-              <span className="text-lg">• React.js</span>
-              <span className="text-lg">• Git</span>
-              <span className="text-lg">• OpenAPI</span>
-              <span className="text-lg">• Linux/Unix CLI</span>
-              <span className="text-lg">• Go</span>
-              <span className="text-lg">• C++</span>
-              <span className="text-lg">• SQL</span>
-            </div>
-          </div>
-          <div className="order-2 flex h-full flex-col items-center lg:order-3 ">
-            <span className="my-4 text-2xl">Contact</span>
-            <div className="flex h-full  flex-col justify-evenly">
-              <LogoLink link="mailto:vivz753@gmail.com" label="vivz753@gmail.com" icon={Icon.MAIL} />
-              <LogoLink link="https://github.com/vivz753" label="github.com/vivz753" icon={Icon.GITHUB} />
-              <LogoLink link="https://linkedin.com/in/vivz753" label="linkedin.com/in/vivz753" icon={Icon.LINKEDIN} />
-            </div>
-          </div>
-        </section>
-        <Title>Experience</Title>
-        {experience.map(({ title, organization, location, date, link }) => (
-          <Job
-            key={title + organization}
-            title={title}
-            organization={organization}
-            location={location}
-            date={date}
-            link={link}
-          />
-        ))}
-        <Title>Education</Title>
-        {education.map(({ title, organization, location, date }) => (
-          <Job key={title + organization} title={title} organization={organization} location={location} date={date} />
-        ))}
-        <Title>Leadership</Title>
-        {leadership.map(({ title, organization, location, date }) => (
-          <Job key={title + organization} title={title} organization={organization} location={location} date={date} />
-        ))}
-        <Title>Awards & Certifications</Title>
-        {awardsCertifications.map(({ title, organization, location, date, link }) => (
-          <Job
-            key={title + organization}
-            title={title}
-            organization={organization}
-            location={location}
-            date={date}
-            link={link}
-          />
-        ))}
-      </div>
+        </aside>
+        <div className="flex w-full items-center justify-center px-4 pb-[5vh] lg:p-8">
+          <section className="flex w-full flex-col ">
+            <Title>Experience</Title>
+            {experience.map(({ title, organization, location, date, link }) => (
+              <Job
+                key={title + organization}
+                title={title}
+                organization={organization}
+                location={location}
+                date={date}
+                link={link}
+              />
+            ))}
+            <Title>Education</Title>
+            {education.map(({ title, organization, location, date }) => (
+              <Job
+                key={title + organization}
+                title={title}
+                organization={organization}
+                location={location}
+                date={date}
+              />
+            ))}
+            <Title>Leadership</Title>
+            {leadership.map(({ title, organization, location, date }) => (
+              <Job
+                key={title + organization}
+                title={title}
+                organization={organization}
+                location={location}
+                date={date}
+              />
+            ))}
+            <Title>Awards & Certifications</Title>
+            {awardsCertifications.map(({ title, organization, location, date, link }) => (
+              <Job
+                key={title + organization}
+                title={title}
+                organization={organization}
+                location={location}
+                date={date}
+                link={link}
+              />
+            ))}
+          </section>
+        </div>
+      </main>
     </div>
   )
 }
 
 export default CV
 
-const Title: FC<React.PropsWithChildren> = ({ children }) => <span className="py-4 text-2xl lg:-ml-12">{children}</span>
+const Title: FC<React.PropsWithChildren> = ({ children }) => <span className="py-4 text-2xl">{children}</span>
 
 const Job: FC<{ title: string; date: string; organization: string; location: string; link?: string }> = ({
   title,
@@ -284,7 +299,7 @@ const Job: FC<{ title: string; date: string; organization: string; location: str
   link = "",
 }) => (
   <ConditionalWrapper link={link}>
-    <div className="flex flex-row justify-between py-2">
+    <div className="flex flex-row justify-between gap-4 py-2 lg:ml-12">
       <div className="flex flex-col gap-1">
         <span className={clsx("text-lg font-bold", link && "underline hover:text-pink-300")}>{title}</span>
         <span className="text-lg">

@@ -1,6 +1,7 @@
 import clsx from "clsx"
 import Link from "next/link"
 import { FC } from "react"
+import Clock from "react-live-clock"
 
 const hexColor = (color: string) =>
   color === "pink"
@@ -29,7 +30,7 @@ export const ColorLink: FC<{ text: string; href: string }> = ({ text, href }) =>
 
 export const Navbar: FC = () => {
   return (
-    <div className="absolute flex w-full flex-row items-center gap-16 bg-pink-200 px-24 py-10">
+    <nav className="absolute flex w-full flex-row items-center gap-8 bg-pink-200 px-12 py-10 lg:gap-16 lg:px-24">
       {/* Title */}
       <ColorLink href="/" text="vleung" />
       {/* Menu */}
@@ -39,9 +40,10 @@ export const Navbar: FC = () => {
       </div>
 
       {/* Time */}
-      <p className="mt-3 text-xs md:m-4 md:ml-auto">
-        {/* <Clock format={"h:mm:ss a "} ticking={true} timezone={"US/Pacific"} /> PST */}
-      </p>
-    </div>
+      <div className="mt-3 hidden flex-row whitespace-pre text-xs sm:flex">
+        <Clock format={"dddd, MMMM Mo, YYYY, h:mm:ss a"} ticking={true} timezone={"US/Pacific"} />
+        <span>{` (PST)`}</span>
+      </div>
+    </nav>
   )
 }

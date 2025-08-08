@@ -1,6 +1,6 @@
 import Head from "next/head"
 import { FC } from "react"
-// import { Footer } from "./Footer"
+import { Footer } from "./Footer"
 import { Navbar } from "./Navbar"
 
 export const Layout: FC<React.PropsWithChildren> = ({ children }) => {
@@ -13,11 +13,11 @@ export const Layout: FC<React.PropsWithChildren> = ({ children }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="relative flex min-h-screen w-full flex-col overflow-auto">
+        <div className="relative flex w-full flex-col ">
           <Navbar />
           {/* Page w/ content */}
-          {children}
-          {/* <Footer /> */}
+          <div className="flex h-full min-h-screen">{children}</div>
+          <Footer />
         </div>
       </main>
     </>
