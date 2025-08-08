@@ -1,103 +1,254 @@
+import clsx from "clsx"
 import { NextPage } from "next"
 import Link from "next/link"
-import { FC } from "react"
+import React, { FC } from "react"
 import { FaGithubSquare, FaLinkedin } from "react-icons/fa"
 import { MdEmail } from "react-icons/md"
+import Image from "next/image"
+
+interface Entry {
+  title: string
+  organization: string
+  location: string
+  date: string
+  description?: string
+  link?: string
+}
+
+const experience: Entry[] = [
+  {
+    title: "Open Source Web Developer with Google Summer of Code 2025",
+    organization: "Blender Foundation",
+    location: "Amsterdam, Netherlands",
+    date: "May 2025 - Sept 2025",
+    description: "",
+    link: "https://devtalk.blender.org/t/gsoc-2025-adding-handy-features-and-ui-improvements-to-flamenco/40723",
+  },
+  {
+    title: "Instructor",
+    organization: "Art Hub Academy,",
+    location: "Sunnyvale CA USA",
+    date: "Apr 2023 - May 2025",
+    description: "",
+  },
+  {
+    title: "Front-End Engineer",
+    organization: "Coinvise",
+    location: "San Francisco CA USA",
+    date: "Dec 2021 - Mar 2023",
+    description: "",
+  },
+  {
+    title: "Senior Web Components Engineer",
+    organization: "Infor",
+    location: "New York NY USA",
+    date: "Jul 2021 - Dec 2021",
+    description: "",
+  },
+  {
+    title: "Software Engineer",
+    organization: "Auris Health",
+    location: "Redwood City CA USA",
+    date: "Nov 2019 - Sep 2020",
+    description: "",
+  },
+  {
+    title: "Software Intern (Machine Learning)",
+    organization: "Clover Network",
+    location: "Sunnyvale CA USA",
+    date: "Jun 2019 - Sep 2019",
+    description: "",
+  },
+  {
+    title: "Software Intern (Front-End)",
+    organization: "IBM Silicon Valley Labs",
+    location: "San Jose CA USA",
+    date: "Oct 2018 - Mar 2019",
+    description: "",
+  },
+  {
+    title: "Instructional Student Assistant",
+    organization: "San Jose State University",
+    location: "San Jose CA USA",
+    date: "Nov 2017 - May 2018",
+    description: "",
+  },
+  {
+    title: "Lab Technician",
+    organization: "Spectra7 Microsystems",
+    location: "San Jose CA USA",
+    date: "Aug 2017 - Sep 2017",
+    description: "",
+  },
+  {
+    title: "Sales Associate",
+    organization: "Barnes & Nobles, Inc.",
+    location: "San Jose CA USA",
+    date: "Dec 2016 - Feb 2017",
+    description: "",
+  },
+  {
+    title: "Lifeguard, Swim Instructor",
+    organization: "Cosumnes CSD",
+    location: "Elk Grove CA USA",
+    date: "May 2014 - Aug 2015",
+    description: "",
+  },
+]
+
+const education: Entry[] = [
+  {
+    title: "BS Software Engineering 3.72 GPA",
+    organization: "San Jose State University",
+    location: "San Jose CA",
+    date: "Aug 2015 - May 2019",
+    description: "",
+  },
+]
+const leadership: Entry[] = [
+  {
+    title: "Treasurer",
+    organization: "Society of Women Engineers",
+    location: "San Jose State University",
+    date: "May 2018 - May 2019",
+    description: "",
+  },
+  {
+    title: "Clubroom Manager",
+    organization: "Society of Women Engineers",
+    location: "San Jose State University",
+    date: "Nov 2017 - May 2018",
+    description: "",
+  },
+  {
+    title: "Vice President",
+    organization: "Key Club",
+    location: "Cosumnes Oaks Highschool",
+    date: "May 2012 - May 2014",
+    description: "",
+  },
+  {
+    title: "Public Relations Officer",
+    organization: "National Honor Society",
+    location: "Cosumnes Oaks Highschool",
+    date: "May 2018 - May 2019",
+    description: "",
+  },
+]
+
+const awardsCertifications: Entry[] = [
+  {
+    title: "edX Verified Certificate for Computer Graphics",
+    organization: "University of San Diego",
+    location: "San Diego CA USA",
+    date: "Oct 2020",
+    description: "",
+    link: "https://courses.edx.org/certificates/482ed4cfd2b0444d846da2e1975dacdc",
+  },
+  {
+    title: "Dean's Scholar",
+    organization: "San Jose State University",
+    location: "San Jose CA USA",
+    date: "Aug 2015 - May 2019",
+    description: "",
+  },
+  {
+    title: "Silicon Valley Engineering Scholarship",
+    organization: "San Jose State University",
+    location: "San Jose CA USA",
+    date: "Aug 2015 - May 2019",
+    description: "",
+  },
+  {
+    title: "American Red Cross Lifeguarding / First Aid / Administering Emergency Oxygen / CPR / AED",
+    organization: "Cosumnes CSD",
+    location: "Elk Grove CA USA",
+    date: "Aug 2015 - May 2019",
+    description: "",
+  },
+  {
+    title: "AP Scholar with Distinction",
+    organization: "Collegeboard",
+    location: "",
+    date: "May 2014",
+    description: "",
+  },
+  {
+    title: "Distinguished Vice President",
+    organization: "Key Club Cal-Nev-Ha District",
+    location: "",
+    date: "May 2013",
+    description: "",
+  },
+]
+
+enum Icon {
+  GITHUB,
+  MAIL,
+  LINKEDIN,
+}
+
+const logoLinkHoverStyle = "group-hover:text-pink-300"
+const LogoLink: FC<{ link: string; label: string; icon: Icon }> = ({ link, label, icon }) => (
+  <a href={link} className="group flex flex-row items-center gap-2">
+    {icon === Icon.LINKEDIN ? (
+      <FaLinkedin className={clsx("h-8 w-8", logoLinkHoverStyle)} />
+    ) : icon === Icon.GITHUB ? (
+      <FaGithubSquare className={clsx("h-8 w-8", logoLinkHoverStyle)} />
+    ) : (
+      <MdEmail className={clsx("h-8 w-8", logoLinkHoverStyle)} />
+    )}
+
+    <span className={logoLinkHoverStyle}>{label}</span>
+  </a>
+)
 
 const CV: NextPage = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center px-8 pt-28 lg:px-24">
+    <div className="flex min-h-screen flex-col items-center justify-center px-4 pt-8 lg:px-24">
       <div className="flex w-full max-w-[719px] flex-col py-24">
         <div className="flex flex-col items-center justify-center gap-4 py-8">
-          <div className="text-2xl">Vivian Leung</div>
+          <div className="relative h-48 w-48 overflow-clip rounded-full  bg-red-500">
+            <Image alt="portrait" src="/images/me-mimi-profile.png" fill style={{ objectFit: "cover" }} />
+          </div>
+          <div className="text-3xl">Vivian Leung</div>
+          <div className="text-xl">Web Developer</div>
           <div className="flex flex-col items-center gap-2 lg:flex-row lg:gap-8">
-            <div className="flex flex-row items-center gap-2">
-              <MdEmail className="h-8 w-8" />
-              <div>vivz753@gmail.com</div>
-            </div>
-            <Link className="flex flex-row items-center gap-2" href="https://github.com/vivz753">
-              <FaGithubSquare className="h-8 w-8" />
-              github.com/vivz753
-            </Link>
-            <Link href="https://linkedin.com/in/vivz753" className="flex flex-row items-center gap-2">
-              <FaLinkedin className="h-8 w-8" />
-              linkedin.com/in/vivz753
-            </Link>
+            <LogoLink link="mailto:vivz753@gmail.com" label="vivz753@gmail.com" icon={Icon.MAIL} />
+            <LogoLink link="https://github.com/vivz753" label="github.com/vivz753" icon={Icon.GITHUB} />
+            <LogoLink link="https://linkedin.com/in/vivz753" label="linkedin.com/in/vivz753" icon={Icon.LINKEDIN} />
           </div>
         </div>
-        <div className="-ml-4 py-4 text-2xl lg:-ml-12">Experience</div>
-        <Job title="Instructor" date="Apr 2023 - Feb 2024" location="Art Hub Academy, Sunnyvale CA USA" />
-        <Job title="Lead Front-End Engineer" date="Dec 2021 - Mar 2023" location="Coinvise, San Francisco CA USA" />
-        <Job title="Senior Web Components Engineer" date="Jul 2021 - Dec 2021" location="Infor, New York NY USA" />
-        <Job
-          title="Front-End Software Engineer"
-          date="Mar 2021 - April 2021"
-          location="The Power of Music LTD, London England UK"
-        />
-        <Job title="Full Stack Software Engineer" date="Dec 2020 - Feb 2021" location="AutoviseAI LLC, Gujarat India" />
-        <Job title="C++ Software Engineer" date="Nov 2019 - Sep 2020" location="Auris Health, Redwood City CA USA" />
-        <Job title="Machine Learning Intern" date="Jun 2019 - Sep 2019" location="Clover Network, Sunnyvale CA USA" />
-        <Job
-          title="Front-End Software Intern"
-          date="Oct 2018 - Mar 2019"
-          location="IBM Silicon Valley Labs, San Jose CA USA"
-        />
-        <Job
-          title="Instructional Student Assistant"
-          date="Nov 2017 - May 2018"
-          location="San Jose State University, San Jose CA USA"
-        />
-        <Job title="Lab Technician" date="Aug 2017 - Sep 2017" location="Spectra7 Microsystems, San Jose CA USA" />
-        <Job title="Sales Associate" date="Dec 2016 - Feb 2017" location="Barnes & Nobles, Inc., San Jose CA USA" />
-        <Job title="Lifeguard, Swim Instructor" date="May 2014 - Aug 2015" location="Cosumnes CSD, Elk Grove CA USA" />
-        <Job title="Tutor, Babysitter" date="Sep 2014 - Jul 2015" location="Self-employed, Elk Grove, CA USA" />
-        <div className="-ml-4 py-4 text-2xl lg:-ml-12">Education</div>
-        <Job
-          title="BS Software Engineering, 3.72 GPA"
-          date="Aug 2015 - May 2019"
-          location="San Jose State University, San Jose CA"
-        />
-        <div className="-ml-4 py-4 text-2xl lg:-ml-12">Leadership</div>
-        <Job
-          title="Treasurer"
-          date="May 2018 - May 2019"
-          location="Society of Women Engineers, San Jose State University"
-        />
-        <Job
-          title="Clubroom Manager"
-          date="Nov 2017 - May 2018"
-          location="Society of Women Engineers, San Jose State University"
-        />
-        <Job title="Vice President" date="May 2012 - May 2014" location="Key Club, Cosumnes Oaks Highschool" />
-        <Job
-          title="Public Relations Officer"
-          date="May 2013 - May 2014"
-          location="National Honor Society, Cosumnes Oaks Highschool"
-        />
-        <div className="-ml-4 py-4 text-2xl lg:-ml-12">Awards & Certifications</div>
-        <Job
-          link="https://courses.edx.org/certificates/482ed4cfd2b0444d846da2e1975dacdc"
-          title="edX Verified Certificate for Computer Graphics"
-          date="Oct 2020"
-          location="University of San Diego, San Diego CA"
-        />
-        <Job title="Dean's Scholar" date="Aug 2015 - May 2019" location="San Jose State University, San Jose CA" />
-        <Job
-          title="Silicon Valley Engineering Scholarship"
-          date="Aug 2015 - May 2019"
-          location="San Jose State University, San Jose CA"
-        />
-        <Job
-          title="American Red Cross Lifeguarding / First Aid / Administering Emergency Oxygen / CPR / AED"
-          date="Apr 2014"
-          location="Cosumnes CSD, Elk Grove"
-        />
-        <Job title="AP Scholar with Distinction" date="May 2014" location="Collegeboard" />
-        <Job
-          title="Distinguished Vice President"
-          date="May 2013"
-          location="Key Club Cal-Nev-Ha District Convention, Anaheim CA "
-        />
+        <Title>Experience</Title>
+        {experience.map(({ title, organization, location, date, link }) => (
+          <Job
+            key={title + organization}
+            title={title}
+            organization={organization}
+            location={location}
+            date={date}
+            link={link}
+          />
+        ))}
+        <Title>Education</Title>
+        {education.map(({ title, organization, location, date }) => (
+          <Job key={title + organization} title={title} organization={organization} location={location} date={date} />
+        ))}
+        <Title>Leadership</Title>
+        {leadership.map(({ title, organization, location, date }) => (
+          <Job key={title + organization} title={title} organization={organization} location={location} date={date} />
+        ))}
+        <Title>Awards & Certifications</Title>
+        {awardsCertifications.map(({ title, organization, location, date, link }) => (
+          <Job
+            key={title + organization}
+            title={title}
+            organization={organization}
+            location={location}
+            date={date}
+            link={link}
+          />
+        ))}
       </div>
     </div>
   )
@@ -105,17 +256,22 @@ const CV: NextPage = () => {
 
 export default CV
 
-const Job: FC<{ title: string; date: string; location: string; link?: string }> = ({
+const Title: FC<React.PropsWithChildren> = ({ children }) => <span className="py-4 text-2xl lg:-ml-12">{children}</span>
+
+const Job: FC<{ title: string; date: string; organization: string; location: string; link?: string }> = ({
   title,
-  date,
+  organization,
   location,
+  date,
   link = "",
 }) => (
   <ConditionalWrapper link={link}>
     <div className="flex flex-row justify-between py-2">
       <div className="flex flex-col gap-1">
-        <span className="text-lg font-bold">{title}</span>
-        <span className="text-lg">{location}</span>
+        <span className={clsx("text-lg font-bold", link && "underline hover:text-pink-300")}>{title}</span>
+        <span className="text-lg">
+          {organization} — {location}
+        </span>
       </div>
       <span className="mt-2 min-w-max text-right align-bottom text-xs uppercase">{date}</span>
     </div>
