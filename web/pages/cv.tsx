@@ -18,7 +18,7 @@ const experience: Entry[] = [
   },
   {
     title: "Instructor",
-    organization: "Art Hub Academy,",
+    organization: "ArtHub Academy",
     location: "Sunnyvale CA USA",
     date: "Apr 2023 - May 2025",
     description: "",
@@ -191,10 +191,10 @@ const LogoLink: FC<{ link: string; label: string; icon: Icon }> = ({ link, label
 
 const CV: NextPage = () => {
   return (
-    <div className="flex h-full min-h-screen w-full items-center pt-[108px] ">
-      <main className="grid lg:grid-cols-[minmax(230px,_450px)_minmax(774px,_1fr)]">
+    <div className="flex h-full min-h-screen w-full items-center pt-[112px] ">
+      <main className="grid w-full pb-8 lg:grid-cols-[minmax(230px,_450px)_minmax(774px,_1024px)] lg:gap-8 lg:pb-0">
         <aside className="flex h-full w-full flex-col">
-          <div className="fixed sticky top-[0vh] w-full py-[5vh] lg:h-[100vh]">
+          <div className="fixed sticky top-[0vh] w-full bg-pink-50 py-[5vh] lg:h-[100vh]">
             <section className="grid h-full items-center justify-center gap-4">
               <div className="flex flex-col items-center ">
                 <div className="relative mb-2 h-48 w-48 overflow-clip rounded-full">
@@ -236,8 +236,8 @@ const CV: NextPage = () => {
             </section>
           </div>
         </aside>
-        <div className="flex w-full items-center justify-center px-4 pb-[5vh] lg:p-8">
-          <section className="flex w-full flex-col ">
+        <div className="flex w-full items-center justify-center px-8 lg:p-8">
+          <section className="flex w-full max-w-[550px] flex-col lg:max-w-full">
             <Title>Experience</Title>
             {experience.map(({ title, organization, location, date, link }) => (
               <Job
@@ -289,7 +289,9 @@ const CV: NextPage = () => {
 
 export default CV
 
-const Title: FC<React.PropsWithChildren> = ({ children }) => <span className="py-4 text-2xl">{children}</span>
+const Title: FC<React.PropsWithChildren> = ({ children }) => (
+  <span className="py-4 text-center text-2xl lg:text-left">{children}</span>
+)
 
 const Job: FC<{ title: string; date: string; organization: string; location: string; link?: string }> = ({
   title,
@@ -299,14 +301,16 @@ const Job: FC<{ title: string; date: string; organization: string; location: str
   link = "",
 }) => (
   <ConditionalWrapper link={link}>
-    <div className="flex flex-row justify-between gap-4 py-2 lg:ml-12">
-      <div className="flex flex-col gap-1">
+    <div className="flex flex-col py-2 lg:ml-8">
+      <div className="grid lg:grid-cols-[1fr,_minmax(100px,140px)]">
         <span className={clsx("text-lg font-bold", link && "underline hover:text-pink-400")}>{title}</span>
-        <span className="text-lg">
-          {organization} — {location}
-        </span>
+        <span className="min-w-max text-sm uppercase text-stone-700 lg:pt-1.5 lg:text-right">{date}</span>
       </div>
-      <span className="mt-2 min-w-max text-right align-bottom text-xs uppercase">{date}</span>
+      <span className="flex flex-col whitespace-pre text-lg lg:inline-flex lg:flex-row">
+        <span>{organization}</span>
+        <span className="hidden lg:flex">{location ? ` — ` : ``}</span>
+        <span>{location}</span>
+      </span>
     </div>
   </ConditionalWrapper>
 )
