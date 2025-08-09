@@ -1,11 +1,10 @@
 import { Icon } from "@types"
 import clsx from "clsx"
-import Link from "next/link"
 import { FC } from "react"
 import { FaGithubSquare, FaLinkedin } from "react-icons/fa"
 import { MdEmail } from "react-icons/md"
 
-const logoLinkHoverStyle = "group-hover:text-pink-300"
+const logoLinkHoverStyle = "group-hover:text-pink-400 text-pink-900"
 const LogoLink: FC<{ link: string; label: string; icon: Icon }> = ({ link, label, icon }) => (
   <a href={link} className="group flex flex-row items-center gap-2">
     {icon === Icon.LINKEDIN ? (
@@ -19,14 +18,6 @@ const LogoLink: FC<{ link: string; label: string; icon: Icon }> = ({ link, label
     <span className={logoLinkHoverStyle}>{label}</span>
   </a>
 )
-
-export const ColorLink: FC<{ text: string; href: string }> = ({ text, href }) => {
-  return (
-    <Link href={href} className={clsx(`text-xl text-pink-400 hover:text-white`)}>
-      {text}
-    </Link>
-  )
-}
 
 export const Footer: FC = () => {
   return (

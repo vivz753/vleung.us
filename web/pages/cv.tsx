@@ -174,7 +174,7 @@ const awardsCertifications: Entry[] = [
   },
 ]
 
-const logoLinkHoverStyle = "group-hover:text-pink-300"
+const logoLinkHoverStyle = "group-hover:text-pink-400"
 const LogoLink: FC<{ link: string; label: string; icon: Icon }> = ({ link, label, icon }) => (
   <a href={link} className="group flex flex-row items-center gap-2">
     {icon === Icon.LINKEDIN ? (
@@ -301,7 +301,7 @@ const Job: FC<{ title: string; date: string; organization: string; location: str
   <ConditionalWrapper link={link}>
     <div className="flex flex-row justify-between gap-4 py-2 lg:ml-12">
       <div className="flex flex-col gap-1">
-        <span className={clsx("text-lg font-bold", link && "underline hover:text-pink-300")}>{title}</span>
+        <span className={clsx("text-lg font-bold", link && "underline hover:text-pink-400")}>{title}</span>
         <span className="text-lg">
           {organization} — {location}
         </span>

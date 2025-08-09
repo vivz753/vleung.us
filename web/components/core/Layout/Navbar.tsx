@@ -22,7 +22,7 @@ const hexColor = (color: string) =>
 
 export const ColorLink: FC<{ text: string; href: string }> = ({ text, href }) => {
   return (
-    <Link href={href} className={clsx(`text-xl text-pink-400 hover:text-white`)}>
+    <Link href={href} className={clsx(`text-xl text-pink-900 hover:text-pink-500`)}>
       {text}
     </Link>
   )
@@ -40,7 +40,7 @@ export const Navbar: FC = () => {
       </div>
 
       {/* Time */}
-      <div className="mt-3 hidden flex-row whitespace-pre text-xs sm:flex">
+      <div className="mt-3 hidden flex-row whitespace-pre text-xs text-pink-900 sm:flex">
         <Clock format={"dddd, MMMM Mo, YYYY, h:mm:ss a"} ticking={true} timezone={"US/Pacific"} />
         <span>{` (PST)`}</span>
       </div>

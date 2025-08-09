@@ -12,14 +12,12 @@ export const Layout: FC<React.PropsWithChildren> = ({ children }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <div className="relative flex w-full flex-col ">
-          <Navbar />
-          {/* Page w/ content */}
-          <div className="flex h-full min-h-screen">{children}</div>
-          <Footer />
-        </div>
-      </main>
+      <body className="relative flex w-full flex-col ">
+        <Navbar />
+        {/* Page w/ content */}
+        <main className="flex h-full min-h-screen bg-stone-50 text-stone-900">{children}</main>
+        <Footer />
+      </body>
     </>
   )
 }
