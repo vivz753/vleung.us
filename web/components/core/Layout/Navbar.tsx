@@ -1,4 +1,5 @@
 import clsx from "clsx"
+import Image from "next/image"
 import Link from "next/link"
 import { FC } from "react"
 import Clock from "react-live-clock"
@@ -30,9 +31,16 @@ export const ColorLink: FC<{ text: string; href: string }> = ({ text, href }) =>
 
 export const Navbar: FC = () => {
   return (
-    <nav className="absolute flex w-full flex-row items-center gap-8 bg-pink-200 px-12 py-10 lg:gap-16 lg:px-24">
+    <nav className="absolute flex h-[112px] w-full flex-row items-center gap-8 bg-pink-200 px-12 lg:gap-12 lg:px-24">
       {/* Title */}
-      <ColorLink href="/" text="vleung" />
+      <Link href="/" className="relative block h-[50px] w-[50px] shrink-0">
+        <Image
+          alt="Profile picture of Vivian with her cat, Mimi"
+          src="/images/mimi_pixelart.png"
+          fill
+          style={{ objectFit: "cover" }}
+        />
+      </Link>
       {/* Menu */}
       <div className="flex w-full flex-row items-center gap-8">
         <ColorLink href="/cv/" text="CV" />

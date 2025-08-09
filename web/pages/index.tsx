@@ -1,67 +1,25 @@
 import Image from "next/image"
-import { GiAngelWings, GiBlackBook, GiBroadsword, GiLargePaintBrush, GiOrbWand, GiShield } from "react-icons/gi"
 
 export default function Home() {
   return (
-    <div
-      style={{
-        cursor: "url('/favicon.ico'), auto",
-      }}
-      className="flex min-h-screen w-full flex-col items-center justify-center"
-    >
-      {/* TODO: add rainbow css animation from vleung.art */}
-      <div className="relative flex h-[500px] w-full flex-col items-center rounded-2xl border-4 border-yellow-700 bg-yellow-700 md:flex-row lg:w-[750px]">
-        {/* MAIN SCREEN */}
-        <div className="relative h-full w-3/4 p-8">
-          <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-2xl border-8 border-yellow-900">
-            <div className="flex h-full w-full flex-row">
-              <div className="w-1/6 animate-pulse bg-white bg-opacity-90"></div>
-              <div className="w-1/6 animate-pulse bg-pink-300 bg-opacity-90"></div>
-              <div className="w-1/6 animate-pulse bg-blue-400 bg-opacity-90"></div>
-              <div className="w-1/6 animate-pulse bg-green-300 bg-opacity-90"></div>
-              <div className="w-1/6 animate-pulse bg-yellow-400 bg-opacity-90"></div>
-              <div className="w-1/6 animate-pulse bg-red-500 bg-opacity-90"></div>
-              <div className="aniamte-pulse w-1/6 bg-blue-800 bg-opacity-90"></div>
-            </div>
-            <ul className="absolute z-50 flex flex-col items-start text-white">
-              <li className="w-full py-8 text-center text-xl md:text-2xl">Level 27</li>
-              <li className="flex flex-row items-center pb-4 text-lg uppercase md:text-xl">
-                <GiAngelWings className="mx-2 h-6 w-8" />
-                Web Developer & Artist
-              </li>
-              <li className="text-md flex flex-row items-center pb-2 md:text-lg">
-                <GiBroadsword className="mx-2" />
-                MacOS, Windows, Linux
-              </li>
-              <li className="text-md flex flex-row items-center pb-2 md:text-lg">
-                <GiShield className="mx-2" />
-                VSCode, Vim
-              </li>
-              <li className="text-md flex flex-row items-center pb-2 md:text-lg">
-                <GiOrbWand className="mx-2" />
-                React / Tailwind CSS / Typescript
-              </li>
-              <li className="text-md flex flex-row items-center pb-2 md:text-lg">
-                <GiBlackBook className="mx-2" />
-                C++, Python, Bash
-              </li>
-              <li className="text-md flex flex-row items-center pb-2 md:text-lg">
-                <GiLargePaintBrush className="mx-2" />
-                Procreate, Adobe Photoshop
-              </li>
-            </ul>
-          </div>
+    <div className="flex h-full min-h-screen w-full items-center items-center justify-center px-8 pt-[108px]">
+      <div className="flex flex-col items-center gap-12 lg:flex-row">
+        <div className="relative mb-2 h-48 w-48 shrink-0 overflow-clip rounded-full">
+          <Image
+            alt="Profile picture of Vivian with her cat, Mimi"
+            src="/images/me-mimi-profile.png"
+            fill
+            style={{ objectFit: "cover" }}
+          />
         </div>
-        {/* SIDE PANEL */}
-        <div className="flex h-full flex-col justify-evenly pr-8">
-          <div className="relative h-[180px] w-[180px] overflow-hidden rounded-3xl border-4 border-yellow-900">
-            <Image alt="portrait" src="/images/vivian.jpg" style={{ objectFit: "contain" }} width={200} height={200} />
-          </div>
-          {/* <div className="flex w-full flex-row justify-evenly">
-            <button className="h-8 w-8 rounded-full bg-red-300"> left</button>
-            <button className="h-8 w-8 rounded-full bg-red-300"> left</button>
-          </div>
-          <button className="h-8 w-8 rounded-full bg-red-300"> vol</button> */}
+        <div className="max-w-2/5 flex h-max whitespace-pre-line rounded-md border border-stone-900 p-6 lg:max-w-[500px]">
+          <span>
+            {`Hello! My name is Vivian Leung and I'm a web developer. 
+          
+          I graduated from San Jose State University in 2019 with a B.S. in Software Engineering. On my free time, I teach workshops in drawing and painting, play video games, make music with my bass guitar and piano, and play with my cat Mimi, who is the inspiration for look and feel of this website.
+        
+        You can find my CV and Portfolio above, and my contact in the bottom left corner.`}
+          </span>
         </div>
       </div>
     </div>
