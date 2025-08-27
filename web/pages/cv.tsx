@@ -194,7 +194,7 @@ const CV: NextPage = () => {
     <div className="flex h-full min-h-screen w-full items-center pt-[112px] ">
       <main className="grid w-full pb-8 lg:grid-cols-[minmax(230px,_450px)_minmax(774px,_1024px)] lg:gap-8 lg:pb-0">
         <aside className="flex h-full w-full flex-col">
-          <div className="fixed sticky top-[0vh] w-full bg-pink-50 py-[5vh] lg:h-[100vh]">
+          <div className="sticky top-[0vh] w-full bg-pink-50 py-[5vh] lg:h-[100vh]">
             <section className="grid h-full items-center justify-center gap-4">
               <div className="flex flex-col items-center ">
                 <div className="relative mb-2 h-48 w-48 overflow-clip rounded-full">
@@ -205,12 +205,12 @@ const CV: NextPage = () => {
                     style={{ objectFit: "cover" }}
                   />
                 </div>
-                <span className="text-3xl">Vivian Leung</span>
-                <span className="text-xl">Web Developer</span>
+                <span className="text-2xl">Vivian Leung</span>
+                <span className="text-lg">Web Developer</span>
               </div>
               <div className="order-3 flex flex-col items-center lg:order-2 ">
                 <span className="my-2 text-2xl">Skills</span>
-                <div className="grid h-full grid-cols-2 gap-x-8 lg:grid-cols-1">
+                <div className="grid h-full grid-cols-2 gap-x-8 2xl:grid-cols-1">
                   <span className="text-lg">• Typescript</span>
                   <span className="text-lg">• React.js</span>
                   <span className="text-lg">• Git</span>
