@@ -191,7 +191,7 @@ const LogoLink: FC<{ link: string; label: string; icon: Icon }> = ({ link, label
 
 const CV: NextPage = () => {
   return (
-    <div className="flex h-full min-h-screen w-full items-center pt-[112px] ">
+    <div className="flex h-full min-h-screen w-full items-center pt-[112px]">
       <main className="grid w-full pb-8 lg:grid-cols-[minmax(230px,_450px)_minmax(774px,_1024px)] lg:gap-8 lg:pb-0">
         <aside className="flex h-full w-full flex-col">
           <div className="sticky top-[0vh] w-full bg-pink-50 py-[5vh] lg:h-[100vh]">
